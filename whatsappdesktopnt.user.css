@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Whatsapp'd Whatsapp
 @namespace      https://github.com/BleatBytes/whatsappd-whatsapp
-@version        1.5.1
+@version        1.5.3
 @description    Making Whatsapp Web look more like its pre-2025 self.
 @author         Valen
 @preprocessor	stylus
@@ -12,7 +12,7 @@
 @var checkbox noLogo "Hide the WhatsApp logo from the header" 0
 @var checkbox noFilters "Hides the filters list" 0
 @var number screenSize	"Pop-up menu horizontal fix. Change the numbers until you feel the right-click menu is close enough to your mouse on the X-axis." 1920
-@var number heightSize "Pop-up menu horizontal fix. Change the numbers until you feel the right-click menu is close enough to your mouse on the Y-axis." 955
+@var number heightSize "Pop-up menu vertical fix. Change the numbers until you feel the right-click menu is close enough to your mouse on the Y-axis." 955
 
 @var checkbox titleTwo "-- CHATS --" 1
 @var select chatFilters "Chat filter buttons" ["default", "subtle", "coloured", "hidden"]
@@ -120,9 +120,17 @@ span[data-icon="web-login-desktop-upsell-illustration"] svg, .x1rjt51p.x16w0wmm.
 /*There should be a solution that makes the menu place itself properly......*/
 margCalc = (-1)*((10*screenSize)/100)px
 mhgCalc = (-1)*((5*heightSize)/100)px
-._ak4w._ap4-._ap4_{
+._ak4w._ap4-._ap4_[style*="top"]{
 	margin-left: margCalc;
 	margin-top: mhgCalc;
+}
+._ak4w._ap4-._ap4_[style*="bottom"] {
+	margin-left: margCalc;
+	margin-bottom: mhgCalc;
+}
+._ak4w._ap4-._ap4_[style*="right"] {
+	margin-left: unset;
+	margin-right: margCalc;
 }
 
 /*Fixes chatlist background*/
