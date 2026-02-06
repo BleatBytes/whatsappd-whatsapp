@@ -5,7 +5,7 @@
 @description    Making Whatsapp Web look more like its pre-2025 self.
 @author         Valen
 @preprocessor	stylus
-
+@updateURL 		https://raw.githubusercontent.com/BleatBytes/whatsappd-whatsapp/main/whatsappdesktopnt.user.css
 
 @var checkbox titleOne "-- GENERAL LAYOUT --" 1
 @var select headerCol "Page header colour" ["default", "subtle", "viridian"]
@@ -23,6 +23,12 @@
 @var checkbox titleZero "(Note that titles, the options in all caps, are only there to organize this options menu better and don't have any effect at all.)" 1
 
 ==/UserStyle== */
+/*
+If you like this, support me!
+https://ko-fi.com/valensart
+https://ko-fi.com/valensart
+https://ko-fi.com/valensart
+*/
 
 @-moz-document domain("web.whatsapp.com") {
 /*
