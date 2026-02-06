@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Whatsapp'd Whatsapp
 @namespace      https://github.com/BleatBytes/whatsappd-whatsapp
-@version        1.5.0
+@version        1.5.1
 @description    Making Whatsapp Web look more like its pre-2025 self.
 @author         Valen
 @preprocessor	stylus
@@ -291,7 +291,7 @@ body.dark {
 }
 
 /*Hides 'Whatsapp for Desktop' promps*/
-#side div[class=""][role="button"] {
+#side > div:nth-last-child(1) {
 	display: none;
 }
 
