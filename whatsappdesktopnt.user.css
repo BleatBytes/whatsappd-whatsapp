@@ -1,24 +1,27 @@
 /* ==UserStyle==
 @name           Whatsapp'd Whatsapp
 @namespace      https://github.com/BleatBytes/whatsappd-whatsapp
-@version        1.5.4
+@version        1.5.6
 @description    Making Whatsapp Web look more like its pre-2025 self.
 @author         Valen
 @preprocessor	stylus
 @updateURL 		https://raw.githubusercontent.com/BleatBytes/whatsappd-whatsapp/main/whatsappdesktopnt.user.css
 
 @var checkbox titleOne "-- GENERAL LAYOUT --" 1
+@var checkbox resizeYes "Resize window" 1
 @var select headerCol "Page header colour" ["default", "subtle", "viridian"]
 @var checkbox noLogo "Hide the WhatsApp logo from the header" 0
-@var checkbox noFilters "Hides the filters list" 0
-@var number screenSize	"Pop-up menu horizontal fix. Change the numbers until you feel the right-click menu is close enough to your mouse on the X-axis." 1920
-@var number heightSize "Pop-up menu vertical fix. Change the numbers until you feel the right-click menu is close enough to your mouse on the Y-axis." 955
+@var number screenSize	"Pop-up menu horizontal fix. Change the numbers until you feel the right-click menu is close enough to your mouse on the X-axis." 950
+@var number heightSize "Pop-up menu vertical fix. Change the numbers until you feel the right-click menu is close enough to your mouse on the Y-axis." 350
 
 @var checkbox titleTwo "-- CHATS --" 1
-@var select chatFilters "Chat filter buttons" ["default", "subtle", "coloured", "hidden"]
+@var select chatFilters "Chat filter buttons" ["default", "subtle", "viridian", "hidden"]
 @var color checkedColor	"Read checkmark colour" #53bdeb
 @var color linkColor "Hyperlink colour" #1B8755
 @var color linkColorDark "Hyperlink colour (for dark mode)" #1B8755
+@var range audioOp "Avatar opacity when playing audio" [0, 0, 1, .1]
+@var select speedBottom "Move the audio track speed button to the bottom" ["middle", "top", "bottom"]
+@var checkbox littleTail "Add a 'tail' to the audio track speed button, like a speech bubble." 0
 
 @var checkbox titleZero "(Note that titles, the options in all caps, are only there to organize this options menu better and don't have any effect at all.)" 1
 
@@ -44,7 +47,7 @@ Changes to the body element itself; broad changes.
 	--cssgreen-1: #00a884;
 	--cssgreen-2: #008069;
 	--cssgreen-3: #21c063;
-	--cssgreen-4: #1daa61;
+	--cssgreen-4: rgb(29, 170, 97);
 	--cssgreen-5: #103529;
 	--cssgreen-6: #1a8d78;
 	--cssgreen-7: #0d6a59;
@@ -56,38 +59,42 @@ Changes to the body element itself; broad changes.
 	--csscream-4: #f7f5f3; /*Light mode secondary colour*/
 	--csscream-5: #f6f5f4;
 	--cssblue-1: #2c3133;
+	--cssblue-2: #4fc3f7; /*Light mode light blue accents*/
 	--csswhite-1: #ffffff; /*Light mode body colour*/ 
 	--csswhite-2: #ededed;
 	--csswhite-3: #ccd1d7;
 	--cssblack-1: #161717; /*Dark mode body colour*/
 	--cssblack-2: #242626;
 	--cssblack-3: #2d2e2e;
+	--cssblack-4: #111b21b2; /*Light mode unheard audio*/
 	--cssgray-1: #55666f;
 	--cssgray-2: #a1a1a126;
 	--cssgray-3: #54656f;
 	--cssgray-4: #666666;
 	--cssgray-5: #ababab;
 	--cssgray-6: #111b21;
+	--cssgray-7: #9c8d8d; /*Light mode audio controls*/
 	--cssred-1: #ea0038;
 	--cssred-2: #fb5061;
 }
-
-#app:not(:has(span[data-icon="wa-wordmark-refreshed"])) {
-	margin-top: unset;
-	width: 100%;
-	height: 100%;
-	transition: all .2s;
-}
-#app, #app:has(div[class="x1c4vz4f xs83m0k xdl72j9 x1g77sc7 x78zum5 xozqiw3 x1oa3qoh x12fk4p8 xeuugli x2lwn1j x1nhvcw1 x1q0g3np x6s0dn4"]) {
-	position:absolute;
-	top: 0;
-  	left: 0;
-  	right: 0;
-  	margin:auto;
-    margin-top: auto;
- 	margin-top: 1%;
-	width:90%;
-	height:95%
+if (resizeYes == 1) {
+	#app:not(:has(span[data-icon="wa-wordmark-refreshed"])) {
+		margin-top: unset;
+		width: 100%;
+		height: 100%;
+		transition: all .2s;
+	}
+	#app, #app:has(div[class="x1c4vz4f xs83m0k xdl72j9 x1g77sc7 x78zum5 xozqiw3 x1oa3qoh x12fk4p8 xeuugli x2lwn1j x1nhvcw1 x1q0g3np x6s0dn4"]) {
+		position:absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		margin:auto;
+		margin-top: auto;
+		margin-top: 1%;
+		width:90%;
+		height:95%
+	}
 }
 
 /*External links*/
@@ -118,26 +125,27 @@ span[data-icon="web-login-desktop-upsell-illustration"] svg, .x1rjt51p.x16w0wmm.
 
 /*Fixes the right-click menu location*/
 /*There should be a solution that makes the menu place itself properly......*/
-margCalc = (-1)*((10*screenSize)/100)px
-mhgCalc = (-1)*((5*heightSize)/100)px
-._ak4w._ap4-._ap4_[style*="top"]{
-	margin-left: margCalc;
-	margin-top: mhgCalc;
-}
-._ak4w._ap4-._ap4_[style*="bottom"] {
-	margin-left: margCalc;
-	margin-bottom: mhgCalc;
-}
-._ak4w._ap4-._ap4_[style*="right"] {
-	margin-left: unset;
-	margin-right: margCalc;
-}
+if (resizeYes == 1){
+	margCalc = (-1)*((10*screenSize)/100)px
+	mhgCalc = (-1)*((5*heightSize)/100)px
+	._ak4w._ap4-._ap4_[style*="top"]{
+		margin-left: margCalc;
+		margin-top: mhgCalc;
+	}
+	._ak4w._ap4-._ap4_[style*="bottom"] {
+		margin-left: margCalc;
+		margin-bottom: mhgCalc;
+	}
+	._ak4w._ap4-._ap4_[style*="right"] {
+		margin-left: unset;
+		margin-right: margCalc;
+	}
 
-/*Fixes chatlist background*/
-.x1h3rtpe {
-	background: var(--chatlist-panel-background);
+	/*Fixes chatlist background*/
+	.x1h3rtpe {
+		background: var(--chatlist-panel-background);
+	}
 }
-
 /*Buttons*/
 /*Primary*/
 button.xjb2p0i.x1ypdohk.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x-default-marker.xk50ysn.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.xsrozwr.x1w32m0z.xmigjs0.xrolgzk.x17m9png.x91sizk.x1vva9xg.x1jfkl46.x1jchvi3.x1d3mw78.xdd8jsf.x1wfn8jh.x126k92a.x6ikm8r.x10wlt62.x1n2onr6.x1vjfegm.xeh1a47.x1hql6x6.xr8f6zs.xy7xkci.x10j0mou.xine9no.xdfradd.x12ijfkc.x889kno.x1a8lsjc.x13jy36j.x64bnmy,
@@ -186,38 +194,16 @@ body.dark {
 #app:has(div[class="x1c4vz4f xs83m0k xdl72j9 x1g77sc7 x78zum5 xozqiw3 x1oa3qoh x12fk4p8 x2lwn1j x1nhvcw1 xdt5ytf x1dr59a3 xw2csxc x1odjw0f xyinxu5 xp48ta0 x1g2khh7 xtssl2i xp9ttsr x6s0dn4 x9f619 xdounpk x1hql6x6 xe4h88v"]) .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.x2lwn1j.x1nhvcw1.xdt5ytf.x1dr59a3.xw2csxc.x1odjw0f.xyinxu5.xp48ta0.x1g2khh7.xtssl2i.xp9ttsr.x6s0dn4.x9f619.xdounpk.x1hql6x6.xe4h88v {
 	background-color: #fff;
 }
-/*body.dark .x12peec7,
-body.dark #app:has(div[class="x1c4vz4f xs83m0k xdl72j9 x1g77sc7 x78zum5 xozqiw3 x1oa3qoh x12fk4p8 x2lwn1j x1nhvcw1 xdt5ytf x1dr59a3 xw2csxc x1odjw0f xyinxu5 xp48ta0 x1g2khh7 xtssl2i xp9ttsr x6s0dn4 x9f619 xdounpk x1hql6x6 xe4h88v"])  .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.x2lwn1j.x1nhvcw1.xdt5ytf.x1dr59a3.xw2csxc.x1odjw0f.xyinxu5.xp48ta0.x1g2khh7.xtssl2i.xp9ttsr.x6s0dn4.x9f619.xdounpk.x1hql6x6.xe4h88v {
-	background-color: var(--cssblack-2);
-}*/
-/*.x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xgpatz3.xeuugli.x2lwn1j.xl56j7k.xdt5ytf.x6s0dn4 div,
-.x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xgpatz3.xeuugli.x2lwn1j.xl56j7k.xdt5ytf.x6s0dn4 span[data-icon="lock-outline"] svg {
 
-	fill: #000!important;
-}
-body.dark .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xgpatz3.xeuugli.x2lwn1j.xl56j7k.xdt5ytf.x6s0dn4 div,
-body.dark .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xgpatz3.xeuugli.x2lwn1j.xl56j7k.xdt5ytf.x6s0dn4 span[data-icon="lock-outline"] svg{
-	color: #fff!important;
-	fill: #fff!important;
-}*/
-/*body.dark .x1hql6x6, #link-device-instructions-list div{
-	color: var(--csswhite-2);
-}*/
 .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xgpatz3.xeuugli.x2lwn1j.xl56j7k.xdt5ytf.x6s0dn4 li div{
 	border-color: #000;
 }
-/*body.dark .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xgpatz3.xeuugli.x2lwn1j.xl56j7k.xdt5ytf.x6s0dn4 li div{
-	border-color: #fff;
-}*/
 
 /*"Whatsapp for desktop" prompt in login*/
 .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.xeuugli.x2lwn1j.xozqiw3.xamitd3.x7v7x1q.xy296fx.x1p5oq8j.x15zmtp0.xwxc41k.x1oiqv2n.x1rsuxf0.xcgujcq.x1igtfuo.x13up0n2.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.xpypsur.x1fe0zbt.x249io5.xtq6bvn.x12peec7.x91od0.x18w32sv.xym2i8p.xk3sftt.x1i50ybd {
 	border-radius: 5px;
 	border-color: var(--csswhite-3);
 }
-/*body.dark .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.xeuugli.x2lwn1j.xozqiw3.xamitd3.x7v7x1q.xy296fx.x1p5oq8j.x15zmtp0.xwxc41k.x1oiqv2n.x1rsuxf0.xcgujcq.x1igtfuo.x13up0n2.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.xpypsur.x1fe0zbt.x249io5.xtq6bvn.x12peec7.x91od0.x18w32sv.xym2i8p.xk3sftt.x1i50ybd {
-	border-color: var(--cssgray-3);
-}*/
 
 /*Login instructions container*/
 .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.xeuugli.x2lwn1j.xozqiw3.xamitd3.x7v7x1q.xy296fx.xbl0rts.x4i7bpe.x15zmtp0.x1sgudl8.x1oiqv2n.x1rsuxf0.xcgujcq.x1igtfuo.x13up0n2.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.xpypsur.x1fe0zbt.x249io5.xtq6bvn.x12peec7.x91od0.xvl3i4w.xfqsd3n.xzg3blf.x191sbug {
@@ -225,9 +211,6 @@ body.dark .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.x
 	border-radius: 0;
 	border-bottom: 1px solid var(--csswhite-3);
 }
-/*body.dark .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.xeuugli.x2lwn1j.xozqiw3.xamitd3.x7v7x1q.xy296fx.xbl0rts.x4i7bpe.x15zmtp0.x1sgudl8.x1oiqv2n.x1rsuxf0.xcgujcq.x1igtfuo.x13up0n2.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.xpypsur.x1fe0zbt.x249io5.xtq6bvn.x12peec7.x91od0.xvl3i4w.xfqsd3n.xzg3blf.x191sbug {
-	border-bottom: 1px solid var(--cssgray-3);
-}*/
 
 /*Logo on top left corner*/
 .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.xeuugli.x2lwn1j.xozqiw3.x1oa3qoh.x12fk4p8.xh8yej3.xwzfr38 > .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x2lwn1j.x1nhvcw1.x1q0g3np.x6s0dn4 {
@@ -236,10 +219,18 @@ body.dark .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.x
 }
 
 /*Separators for list*/
-button.xjb2p0i.xk390pu.x1heor9g.x1ypdohk.xjbqb8w.x972fbf.x10w94by.x1qhh985.x14e42zd.x1fmog5m.xu25z0z.x140muxe.xo1y3bh.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1yc453h.x6ikm8r.x10wlt62.x78zum5.x1iyjqo2.x2lah0s.xdl72j9.xkh2ocl.xh8yej3[role="listitem"]:not(:first-of-type):not(:last-of-type) .xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x1nhvcw1.x1q0g3np.x9f619.x1iyjqo2.x1qjc9v5.x879a55.x16ydxro.xyo1k6t.xlr9sxt.xvvg52n.xwd4zgb.xq8v1ta.x17gydlx.x1jsj9aw {
+button.xjb2p0i.xk390pu.x1heor9g.x1ypdohk.xjbqb8w.x972fbf.x10w94by.x1qhh985.x14e42zd.x1fmog5m.xu25z0z.x140muxe.xo1y3bh.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1yc453h.x6ikm8r.x10wlt62.x78zum5.x1iyjqo2.x2lah0s.xdl72j9.xkh2ocl.xh8yej3[role="listitem"] .xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x1nhvcw1.x1q0g3np.x9f619.x1iyjqo2.x1qjc9v5.x879a55.x16ydxro.xyo1k6t.xlr9sxt.xvvg52n.xwd4zgb.xq8v1ta.x17gydlx.x1jsj9aw {
 	border-radius: 0;
 	border-bottom: 1px solid var(--csswhite-2);
 }
+.x78zum5.xdt5ytf.x1iyjqo2.x2lah0s.xdl72j9.x1odjw0f.xh8yej3 .xsm26vf.x106a9eq.x1xnnf8n.x889kno.x1a8lsjc {
+	display: none;
+}
+/*Hover on log out button*/
+button.xjb2p0i.xk390pu.x1heor9g.x1ypdohk.xjbqb8w.x972fbf.x10w94by.x1qhh985.x14e42zd.x1fmog5m.xu25z0z.x140muxe.xo1y3bh.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1yc453h.x6ikm8r.x10wlt62.x78zum5.x1iyjqo2.x2lah0s.xdl72j9.xkh2ocl.xh8yej3:last-of-type .xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x1nhvcw1.x1q0g3np.x9f619.x1iyjqo2.x1qjc9v5.x879a55.x16ydxro.xyo1k6t.xlr9sxt.xvvg52n.xwd4zgb.xq8v1ta.x17gydlx.x1jsj9aw:hover {
+	background-color: #ea00381a
+}
+
 .x1gslohp.x3aesyq.xymharo {
 	height: 1px;
 	background-color: var(--csswhite-2);
@@ -252,14 +243,18 @@ button.xjb2p0i.xk390pu.x1heor9g.x1ypdohk.xjbqb8w.x972fbf.x10w94by.x1qhh985.x14e4
 	border-bottom: 1px solid var(--csswhite-2);
 }
 body.dark {
-	button.xjb2p0i.xk390pu.x1heor9g.x1ypdohk.xjbqb8w.x972fbf.x10w94by.x1qhh985.x14e42zd.x1fmog5m.xu25z0z.x140muxe.xo1y3bh.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1yc453h.x6ikm8r.x10wlt62.x78zum5.x1iyjqo2.x2lah0s.xdl72j9.xkh2ocl.xh8yej3[role="listitem"]:not(:first-of-type):not(:last-of-type) .xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x1nhvcw1.x1q0g3np.x9f619.x1iyjqo2.x1qjc9v5.x879a55.x16ydxro.xyo1k6t.xlr9sxt.xvvg52n.xwd4zgb.xq8v1ta.x17gydlx.x1jsj9aw {
+	button.xjb2p0i.xk390pu.x1heor9g.x1ypdohk.xjbqb8w.x972fbf.x10w94by.x1qhh985.x14e42zd.x1fmog5m.xu25z0z.x140muxe.xo1y3bh.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1yc453h.x6ikm8r.x10wlt62.x78zum5.x1iyjqo2.x2lah0s.xdl72j9.xkh2ocl.xh8yej3[role="listitem"] .xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x1nhvcw1.x1q0g3np.x9f619.x1iyjqo2.x1qjc9v5.x879a55.x16ydxro.xyo1k6t.xlr9sxt.xvvg52n.xwd4zgb.xq8v1ta.x17gydlx.x1jsj9aw {
 		border-radius: 0;
 		border-bottom: 1px solid var(--cssblack-3);
 	}
 	.x1gslohp.x3aesyq.xymharo {
 		height: 1px;
 		background-color: var(--cssblack-3);
-	} 
+	}
+	/*Hover on log out button*/
+	button.xjb2p0i.xk390pu.x1heor9g.x1ypdohk.xjbqb8w.x972fbf.x10w94by.x1qhh985.x14e42zd.x1fmog5m.xu25z0z.x140muxe.xo1y3bh.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1yc453h.x6ikm8r.x10wlt62.x78zum5.x1iyjqo2.x2lah0s.xdl72j9.xkh2ocl.xh8yej3:last-of-type .xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x1nhvcw1.x1q0g3np.x9f619.x1iyjqo2.x1qjc9v5.x879a55.x16ydxro.xyo1k6t.xlr9sxt.xvvg52n.xwd4zgb.xq8v1ta.x17gydlx.x1jsj9aw:hover {
+		background-color: #fb506140
+	}
 	.x1n2onr6.x1c4vz4f.x2lah0s.xdl72j9.xyorhqc.x1280gxy.xexx8yu.x5zjp28.x18d9i69.x162tt16:not(:first-of-type) .xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x1cnzs8.xx6bls6.x1c1uobl.xyri2b,
 	.x1n2onr6.x1c4vz4f.x2lah0s.xdl72j9.xyorhqc.x1280gxy.xexx8yu.x5zjp28.x18d9i69.x162tt16:not(:first-of-type) .xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x134lwj9.xyri2b.x1i2zvha.x1c1uobl {
 		border-top: 1px solid var(--cssblack-3);
@@ -335,7 +330,8 @@ if (headerCol == "viridian") {
  	.x78zum5.x1q0g3np.x6ikm8r.x10wlt62.x1jchvi3.x1fcty0u.xdod15v.x1wm35g.x1yc453h.xlyipyv.xuxw1ft.x1c4vz4f.x2lah0s.xdl72j9 > .x1iyjqo2.x6ikm8r.x10wlt62.x1n2onr6.xlyipyv.xuxw1ft.x1rg5ohu._ao3e,
 	.x78zum5.x1q0g3np.x6ikm8r.x10wlt62.x1jchvi3.x1fcty0u.xdod15v.x14ug900.x1yc453h.xlyipyv.xuxw1ft.xh8yej3.x1c4vz4f.x2lah0s.xdl72j9 > .x1c4vz4f.x3nfvp2.xuce83p.x1bft6iq.x1i7k8ik.xq9mrsl.x6s0dn4,
  	header .html-span.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x1lliihq.x1plvlek.xryxfnj.x1n2onr6,
- 	.xjb2p0i.xk390pu.x1heor9g.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6s0dn4.x1280gxy.x1ubxc9n.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1s70e7g.x1ypdohk.x1s07b3s.x78zum5.x1ba4aug.x1hc1fzr.x1lfpgzf.x16ovd2e.x12xbjc7.xdx6fka.xvtqlqk.x150mmf0.xqf2s3x span {
+ 	.xjb2p0i.xk390pu.x1heor9g.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6s0dn4.x1280gxy.x1ubxc9n.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1s70e7g.x1ypdohk.x1s07b3s.x78zum5.x1ba4aug.x1hc1fzr.x1lfpgzf.x16ovd2e.x12xbjc7.xdx6fka.xvtqlqk.x150mmf0.xqf2s3x span,
+ 	header .x1iyjqo2.x6ikm8r.x10wlt62.x1n2onr6.xlyipyv.xuxw1ft.x1rg5ohu._ao3e {
 		color: #fff;
 	}
 	.x78zum5.x1cy8zhl.xisnujt.x1nxh6w3.xcgms0a.xhslqc4 {
@@ -345,17 +341,19 @@ if (headerCol == "viridian") {
 	.xjb2p0i.xk390pu.x1heor9g.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6s0dn4.x1280gxy.x1ubxc9n.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1s70e7g.x1ypdohk.x1s07b3s.x78zum5.x1ba4aug.x1hc1fzr.x1lfpgzf.x16ovd2e.x12xbjc7.xdx6fka.xvtqlqk.x150mmf0.xqf2s3x:hover {
 		background-color: var(--cssgreen-1);
 	}
-	.xgz6z4f,
+	/*.xgz6z4f,
 	span.xxk0z11.xvy4d1p[data-icon="search-refreshed"],
 	span.xxk0z11.xvy4d1p[data-icon="more-refreshed"],
 	span.xxk0z11.xvy4d1p[data-icon="new-chat-outline"] path,
-	span[data-icon="video-call-refreshed"],
 	span[data-icon="video-call-refreshed"]:has(+span[class="xdwrcjd"])+.xdwrcjd,
  	button[aria-label="Status Menu"],
 	span[data-icon="new-round-refreshed"],
  	path[d="M11 13V16C11 16.2833 11.0958 16.5208 11.2875 16.7125C11.4792 16.9042 11.7167 17 12 17C12.2833 17 12.5208 16.9042 12.7125 16.7125C12.9042 16.5208 13 16.2833 13 16V13H16C16.2833 13 16.5208 12.9042 16.7125 12.7125C16.9042 12.5208 17 12.2833 17 12C17 11.7167 16.9042 11.4792 16.7125 11.2875C16.5208 11.0958 16.2833 11 16 11H13V8C13 7.71667 12.9042 7.47917 12.7125 7.2875C12.5208 7.09583 12.2833 7 12 7C11.7167 7 11.4792 7.09583 11.2875 7.2875C11.0958 7.47917 11 7.71667 11 8V11H8C7.71667 11 7.47917 11.0958 7.2875 11.2875C7.09583 11.4792 7 11.7167 7 12C7 12.2833 7.09583 12.5208 7.2875 12.7125C7.47917 12.9042 7.71667 13 8 13H11ZM12 22C10.6167 22 9.31667 21.7375 8.1 21.2125C6.88333 20.6875 5.825 19.975 4.925 19.075C4.025 18.175 3.3125 17.1167 2.7875 15.9C2.2625 14.6833 2 13.3833 2 12C2 10.6167 2.2625 9.31667 2.7875 8.1C3.3125 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.3125 8.1 2.7875C9.31667 2.2625 10.6167 2 12 2C13.3833 2 14.6833 2.2625 15.9 2.7875C17.1167 3.3125 18.175 4.025 19.075 4.925C19.975 5.825 20.6875 6.88333 21.2125 8.1C21.7375 9.31667 22 10.6167 22 12C22 13.3833 21.7375 14.6833 21.2125 15.9C20.6875 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6875 15.9 21.2125C14.6833 21.7375 13.3833 22 12 22ZM12 20C14.2333 20 16.125 19.225 17.675 17.675C19.225 16.125 20 14.2333 20 12C20 9.76667 19.225 7.875 17.675 6.325C16.125 4.775 14.2333 4 12 4C9.76667 4 7.875 4.775 6.325 6.325C4.775 7.875 4 9.76667 4 12C4 14.2333 4.775 16.125 6.325 17.675C7.875 19.225 9.76667 20 12 20Z"],
 	.xjb2p0i.xk390pu.x1heor9g.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6s0dn4.x1280gxy.x1ubxc9n.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1s70e7g.x1ypdohk.x1s07b3s.x78zum5.x1ba4aug.x1hc1fzr.x1lfpgzf.x16ovd2e.x12xbjc7.xdx6fka.xvtqlqk.x150mmf0.xqf2s3x svg,
- 	header .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x6s0dn4.x78zum5.x1vjfegm {
+ 	header .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x6s0dn4.x78zum5.x1vjfegm*/
+	.xgz6z4f,
+ 	header .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x6s0dn4.x78zum5.x1vjfegm span:has(> svg),
+ 	header .xjb2p0i.xk390pu.x1heor9g.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6s0dn4.x1280gxy.x1ubxc9n.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1s70e7g.x1ypdohk.x1s07b3s.x78zum5.x1ba4aug.x1hc1fzr.x1lfpgzf.x16ovd2e.x12xbjc7.xdx6fka.xvtqlqk.x150mmf0.xqf2s3x svg {
 		color: #fff;
 		fill: #fff!important;
 	}
@@ -398,24 +396,23 @@ if (headerCol == "viridian") {
 		background-color: var(--cssblack-1);
 	}
 	.xgz6z4f,
-	span.xxk0z11.xvy4d1p[data-icon="search-refreshed"],
-	span.xxk0z11.xvy4d1p[data-icon="more-refreshed"],
-	span.xxk0z11.xvy4d1p[data-icon="new-chat-outline"] path,
-	span[data-icon="video-call-refreshed"],
-	span[data-icon="video-call-refreshed"]:has(+span[class="xdwrcjd"])+.xdwrcjd,
- 	header .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x6s0dn4.x78zum5.x1vjfegm,
- 	.html-span.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x1lliihq.x193iq5w.x6ikm8r.x10wlt62.xlyipyv.xuxw1ft {
+ 	header .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x6s0dn4.x78zum5.x1vjfegm span:has(> svg),
+ 	header .xjb2p0i.xk390pu.x1heor9g.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6s0dn4.x1280gxy.x1ubxc9n.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1s70e7g.x1ypdohk.x1s07b3s.x78zum5.x1ba4aug.x1hc1fzr.x1lfpgzf.x16ovd2e.x12xbjc7.xdx6fka.xvtqlqk.x150mmf0.xqf2s3x svg {
 		color: var(--cssgray-3);
 		fill: var(--cssgray-3)!important;
 	}
-	/*Whatsapp Title*/body.dark .xgz6z4f,
-	body.dark span.xxk0z11.xvy4d1p[data-icon="search-refreshed"],
-	body.dark span.xxk0z11.xvy4d1p[data-icon="more-refreshed"],
-	body.dark span.xxk0z11.xvy4d1p[data-icon="new-chat-outline"] path,
-	body.dark span[data-icon="video-call-refreshed"],
-	body.dark span[data-icon="video-call-refreshed"]:has(+span[class="xdwrcjd"])+.xdwrcjd,
- 	body.dark header .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x6s0dn4.x78zum5.x1vjfegm,
- 	body.dark .html-span.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x1lliihq.x193iq5w.x6ikm8r.x10wlt62.xlyipyv.xuxw1ft{
+	/*
+	.xgz6z4f,
+	span.xxk0z11.xvy4d1p[data-icon="search-refreshed"],
+	span.xxk0z11.xvy4d1p[data-icon="more-refreshed"],
+	span.xxk0z11.xvy4d1p[data-icon="new-chat-outline"] path,
+	span[data-icon="video-call-refreshed"]:has(+span[class="xdwrcjd"])+.xdwrcjd,
+	header .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x6s0dn4.x78zum5.x1vjfegm,
+	.html-span.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x1lliihq.x193iq5w.x6ikm8r.x10wlt62.xlyipyv.xuxw1ft
+	*/
+	body.dark .xgz6z4f,
+ 	body.dark header .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x6s0dn4.x78zum5.x1vjfegm span:has(> svg),
+ 	body.dark header .xjb2p0i.xk390pu.x1heor9g.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6s0dn4.x1280gxy.x1ubxc9n.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1s70e7g.x1ypdohk.x1s07b3s.x78zum5.x1ba4aug.x1hc1fzr.x1lfpgzf.x16ovd2e.x12xbjc7.xdx6fka.xvtqlqk.x150mmf0.xqf2s3x svg {
 		color: #fff;
 		fill: #fff!important;
 	}
@@ -483,11 +480,6 @@ path[d="M5.4 19.425C5.06667 19.5583 4.75 19.5291 4.45 19.3375C4.15 19.1458 4 18.
 .x10l6tqk.x1n327nk.x1jchvi3.x1lixm6g.x2b8uid.x12peec7.x14yjl9h.xudhj91.x18nykt9.xww2gxu.xu306ak.xkdsq27.x12s1jxh.xwwtwea.x8530fw.xvy4d1p.xxk0z11.x1evy7pa.x1xlz7ou {
 	color: #fff;
 	background-color:var(--cssgreen-4);
-}
-
-/*Read checkmark*/
-.x1q15gih, .x78zum5.x1okw0bk.x16dsc37.x1xp8n7a.xl56j7k.x1q15gih.xfs2ol5, .x1rv0e52 {
-	color: checkedColor!important;
 }
 	
 /*Default group icon*/
@@ -576,37 +568,57 @@ if (chatFilters == "subtle") {
 			flex: 1;
 		}
 	}
-	span:has(button[aria-controls="chat-list"]) {
+	span:has(button[aria-controls="chat-list"]),
+ 	.x78zum5.x1c7u0tx.x1co6499.x1q0q8m5.xkveyfu button {
 		border-bottom: 2px solid var(--csswhite-2);
 		transition: .25s ease-in-out;
 	}
-	span:has(button[aria-controls="chat-list"][aria-pressed="true"]) {
+	span:has(button[aria-controls="chat-list"][aria-pressed="true"]),
+ 	.x78zum5.x1c7u0tx.x1co6499.x1q0q8m5.xkveyfu button[aria-selected="true"] {
 		border-bottom: 2px solid var(--cssgreen-4);
 		transition: .25s ease-in-out;
 	}
-	button[aria-controls="chat-list"] span {
+	.x78zum5.x1c7u0tx.x1co6499.x1q0q8m5.xkveyfu button[aria-selected="false"]:hover {
+		background: unquote("color-mix(in oklab, var(--csssecondary-light) 10%, transparent)");
+	}
+	.x78zum5.x1c7u0tx.x1co6499.x1q0q8m5.xkveyfu button[aria-selected="true"]:hover {
+		background: unquote("color-mix(in oklab, var(--cssgreen-4) 10%, transparent)");
+	}
+	button[aria-controls="chat-list"] span,
+ 	.x78zum5.x1c7u0tx.x1co6499.x1q0q8m5.xkveyfu button[aria-selected="false"] span {
 		color: var(--csssecondary-light)!important;
 		font-weight: normal;
 	}
-	button[aria-controls="chat-list"][aria-pressed="true"] span {
+	button[aria-controls="chat-list"][aria-pressed="true"] span,
+ 	.x78zum5.x1c7u0tx.x1co6499.x1q0q8m5.xkveyfu button[aria-selected="true"] span{
 		color: var(--cssgreen-4)!important;
 		font-weight: bold;
 	}
 	body.dark {
-		span:has(button[aria-controls="chat-list"]) {
+		span:has(button[aria-controls="chat-list"]),
+ 		.x78zum5.x1c7u0tx.x1co6499.x1q0q8m5.xkveyfu button {
 			border-bottom: 2px solid var(--cssblack-3);
 		}
-		span:has(button[aria-controls="chat-list"][aria-pressed="true"]) {
+		span:has(button[aria-controls="chat-list"][aria-pressed="true"]),
+ 		.x78zum5.x1c7u0tx.x1co6499.x1q0q8m5.xkveyfu button[aria-selected="true"] {
 			border-bottom: 2px solid #fff;
 		}
-		button[aria-controls="chat-list"] span {
+		.x78zum5.x1c7u0tx.x1co6499.x1q0q8m5.xkveyfu button[aria-selected="false"]:hover {
+			background: unquote("color-mix(in oklab, var(--csssecondary-dark) 10%, transparent)");
+		}
+		.x78zum5.x1c7u0tx.x1co6499.x1q0q8m5.xkveyfu button[aria-selected="true"]:hover {
+			background: unquote("color-mix(in oklab, #fff 10%, transparent)");
+		}
+		button[aria-controls="chat-list"] span,
+ 		.x78zum5.x1c7u0tx.x1co6499.x1q0q8m5.xkveyfu button[aria-selected="false"] span {
 			color: var(--csssecondary-dark)!important;
 		}
-		button[aria-controls="chat-list"][aria-pressed="true"] span {
+		button[aria-controls="chat-list"][aria-pressed="true"] span,
+ 		.x78zum5.x1c7u0tx.x1co6499.x1q0q8m5.xkveyfu button[aria-selected="true"] span {
 			color: #fff!important;
 		}
 	}
-} else if (chatFilters == "coloured") {
+} else if (chatFilters == "viridian") {
 	div[aria-label="chat-list-filters"] button[aria-pressed="true"] {
 		border: unset;
 		background: var(--cssgreen-4);
@@ -635,6 +647,17 @@ if (chatFilters == "subtle") {
 	CHATS
 ============
 */
+
+/*Read checkmark*/
+.x1fi5f43.x1fi5f43, .x1fi5f43.x1fi5f43:root,
+.xa3rncp.xa3rncp, .xa3rncp.xa3rncp:root {
+	--WDS-content-read: checkedColor;
+}
+/*
+For legacy purposes, the selector used for that is:
+.x1q15gih, .x78zum5.x1okw0bk.x16dsc37.x1xp8n7a.xl56j7k.x1q15gih.xfs2ol5, .x1rv0e52
+*/
+
 /*Fixes stickers*/
 ._ajxb._ajxd, ._ajxb._ajxc._ajxd svg {
 	width: 180px;
@@ -644,6 +667,7 @@ if (chatFilters == "subtle") {
 .x889kno.x1a8lsjc.x1n2onr6.x1rg5ohu.xk50ysn.x1f6kntn.xyesn5m.x1z11no5.xjy5m1g.x1mnwbp6.x4pb5v6.x178xt8z.xm81vs4.xso031l.xy80clv.x13fuv20.xu3j5b3.x1q0q8m5.x26u7qi.x1v8p93f.xogb00i.x16stqrj.x1ftr3km.x1hl8ikr.xfagghw.x9dyr19.x9lcvmn.xurb0ha.x1sxyh0.x1jrnqrx.x12bbwn8.xcjl5na.xuxw1ft.xv52azi:hover {
 	border-radius: 0
 }
+
 /*Chat message input*/
 .x9f619.x12lumcd.x1qrby5j.xeuugli.x6prxxf.x1fcty0u.x1fc57z9.xe7vic5.x1716072.xgde2yp.x89wmna.xbjl0o0.x13fuv20.xu3j5b3.x1q0q8m5.x26u7qi.x178xt8z.xm81vs4.xso031l.xy80clv.x1a2a7pz.x13w7htt.x78zum5.x123j3cw.x1mpkggp.xs9asl8.x1t2a60a.x16n37ib.xq8finb.xod5an3.x1wiwyrm.xt7dq6l.x1x9wcxt.x1f9vhhg.xsr4h3p.x1ytmua2.xkfubxc.x6s0dn4.x1p0mfcu {
 	margin-top:12px;
@@ -655,6 +679,7 @@ if (chatFilters == "subtle") {
 ._aig-._as6h.x9f619.x1n2onr6.x5yr21d.x6ikm8r.x10wlt62.x17dzmu4.x1i1dayz.x2ipvbc.x1w8yi2h.xpilrb4.x1t7ytsu.x1m2ixmg.x1c4vz4f.x2lah0s.x1oy9qf3.xwfak60.x5hsz1j.x17dq4o0.x10e4vud {
 	overflow-y: visible!important;
 }
+
 /*Adds background to chat input*/
 footer._ak1i.x1wiwyrm {
 	background: var(--csswhite-2);
@@ -670,7 +695,151 @@ body.dark footer._ak1i.x1wiwyrm {
 }
 .x9f619.x12lumcd.x1qrby5j.xeuugli.x6prxxf.x1fcty0u.x1fc57z9.xk7ee7b.x1716072.x1ygal6x.x89wmna.x1rbbhm9.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1a2a7pz.x13w7htt.x78zum5.x123j3cw.x1gabggj.xs9asl8.xaso8d8.x1diwwjn.xbmvrgn.xod5an3.x1wiwyrm.xt7dq6l.x17m9png.x91sizk.x1vva9xg.x1jfkl46.x6s0dn4.xkfubxc.x1p0mfcu,
  .x9f619.x12lumcd.x1qrby5j.xeuugli.x6prxxf.x1fcty0u.x1fc57z9.xk7ee7b.x1716072.x1ygal6x.x89wmna.x1rbbhm9.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1a2a7pz.x13w7htt.x78zum5.x123j3cw.x1gabggj.xs9asl8.xaso8d8.x1diwwjn.xbmvrgn.xod5an3.x1wiwyrm.xt7dq6l.x1vva9xg.x1jfkl46.x6s0dn4.x1bczwif.x17un8ov.xz16w4b.x1m0b2ad{
-	margin-bottom: 0;
+	margin-bottom: 6px;
 	box-shadow: unset;
+}
+
+/*Audio/microphone icons*/
+/*Chose to change the root element attributes instead of changing the elements manually since some of them are used for colouring in canvas elements and only get read when the page is first loading. Potentially a source for more customization??*/
+:root {
+	--ptt-thumb-outgoing-unplayed: var(--cssgreen-4);
+	--ptt-thumb-incoming-unplayed: var(--cssgreen-4);
+	--ptt-thumb-outgoing-played: var(--cssblue-2);
+	--ptt-thumb-incoming-played: var(--cssblue-2);
+	--ptt-blue : var(--cssblue-2); /* Audio - heard (outgoing & incoming)*/
+	--ptt-green: var(--cssgreen-4); /* Audio - unheard (incoming)*/
+	--ptt-gray: var(--csssecondary-light); /* Audio - unheard (outgoing)*/
+	--ptt-gray-badge: rgba(84, 101, 111, .6);
+}
+.dark {
+	--ptt-thumb-outgoing-unplayed: var(--cssgreen-4);
+	--ptt-thumb-incoming-unplayed: var(--cssgreen-4);
+	--ptt-thumb-outgoing-played: var(--cssblue-2);
+	--ptt-thumb-incoming-played: var(--cssblue-2);
+	--ptt-blue : var(--cssblue-2); /* Audio - heard (outgoing & incoming)*/
+	--ptt-green: var(--cssgreen-4); /* Audio - unheard (incoming)*/
+	--ptt-gray: var(--csssecondary-dark);
+	--ptt-gray-badge: rgba(11, 20, 26, .6);
+}
+span.xxk0z11.xvy4d1p[data-icon^="audio"], span.xxk0z11.xvy4d1p[data-icon^="audio"] svg {
+	height: 34px!important;
+	width: 34px!important;
+}
+.message-out .x9f619.x900493.x1nn3v0j.x1gabggj.x1120s5i.xaso8d8.x1nxh6w3.xk50ysn.xp9159e.x2b8uid.xlhzguj.x1142k65.x9okykr.x3hdh8v.xr0m5pc.x1muecih {
+	margin-right: 4px;
+	margin-top: 2px;
+}
+.message-in .x9f619.x900493.x1nn3v0j.x1gabggj.x1120s5i.xaso8d8.x1nxh6w3.xk50ysn.xp9159e.x2b8uid.xlhzguj.x1142k65.x9okykr.x3hdh8v.xr0m5pc.x1muecih {
+	margin-right: -4px;
+	margin-top: 2px;
+}
+.x9f619.x900493.x1nn3v0j.x1gabggj.x1120s5i.xaso8d8.x1nxh6w3.xk50ysn.xp9159e.x2b8uid.xlhzguj.x1142k65.x9okykr.x3hdh8v.xr0m5pc.x1muecih::after {
+	content: "x";
+	font-size: .7125rem;
+}
+/*Adds speech bubble tail to speed input*/
+if (littleTail == 1 && speedBottom != "middle") {
+	.x9f619.x900493.x1nn3v0j.x1gabggj.x1120s5i.xaso8d8.x1nxh6w3.xk50ysn.xp9159e.x2b8uid.xlhzguj.x1142k65.x9okykr.x3hdh8v.xr0m5pc.x1muecih::before {
+		content: "";
+		position:absolute;
+		width: 0;
+		height: 0;
+		if (speedBottom == "top") {
+			bottom: -6px;
+		} else {
+			bottom: 20px;
+		}
+	}
+	.message-in .x9f619.x900493.x1nn3v0j.x1gabggj.x1120s5i.xaso8d8.x1nxh6w3.xk50ysn.xp9159e.x2b8uid.xlhzguj.x1142k65.x9okykr.x3hdh8v.xr0m5pc.x1muecih::before {
+		right: 8px;
+		border: unset;
+		border-right: 8px solid transparent;
+		if (speedBottom == "top") {
+			border-bottom: unset;
+			border-top: 6px solid var(--ptt-gray-badge);
+		} else {
+			border-top: unset;
+			border-bottom: 6px solid var(--ptt-gray-badge);
+		}
+	}
+	.message-out .x9f619.x900493.x1nn3v0j.x1gabggj.x1120s5i.xaso8d8.x1nxh6w3.xk50ysn.xp9159e.x2b8uid.xlhzguj.x1142k65.x9okykr.x3hdh8v.xr0m5pc.x1muecih::before {
+		left: 8px;
+		border: unset;
+		border-left: 8px solid transparent;
+		if (speedBottom == "top") {
+			border-bottom: unset;
+			border-top: 6px solid var(--ptt-gray-badge);
+		} else {
+			border-top: unset;
+			border-bottom: 6px solid var(--ptt-gray-badge);
+		}
+	}
+}
+
+.xjb2p0i.xk390pu.x1heor9g.x1ypdohk.xjbqb8w.x972fbf.x10w94by.x1qhh985.x14e42zd.x1fmog5m.xu25z0z.x140muxe.xo1y3bh.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x10l6tqk.x78zum5.x6s0dn4.xl56j7k.xh8yej3.x5yr21d.x87ps6o {
+	z-index: 1;
+	if (speedBottom == "top") {
+		align-items: flex-start;
+	} else if (speedBottom == "bottom") {
+		align-items: flex-end;
+	} else {
+		align-items: center;
+	}
+}
+._ak4m {/*User icon on voice messages*/
+	opacity: audioOp;
+}
+div[class="_ak4m"] ._ak4g { /*Hides microphone icon when playing voice message*/
+	display: none;
+}
+
+/*Hides the "call" text in the video call button*/
+button .x140p0ai.x1gufx9m.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x193iq5w.xeuugli.x13faqbe.x1vvkbs.x2b8uid.x1lliihq.x1fj9vlw.x14ug900.x87ps6o.x1f6kntn.xjb2p0i.xfjzk2p.x8r4c90.x1ic7a3i.x12xpedu {
+	display: none;
+}
+button:has(span[class="x140p0ai x1gufx9m x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x193iq5w xeuugli x13faqbe x1vvkbs x2b8uid x1lliihq x1fj9vlw x14ug900 x87ps6o x1f6kntn xjb2p0i xfjzk2p x8r4c90 x1ic7a3i x12xpedu"]) span:has(> svg) {
+	margin-right: -5px
+}
+
+/*Hides that new unnecessary search button on user info*/
+section.x1c4vz4f.x2lah0s.xdl72j9.x1w3bhph .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x2lwn1j.xl56j7k.x1q0g3np.x1cy8zhl.x1xmf6yo.x12nagc,
+section.x2lah0s.x1c4vz4f.xdl72j9.x1w3bhph .xh8yej3.x1de0gy {
+	display: none;
+}
+section .x13mwh8y.x1q3qbx4.x1wg5k15.x3psx0u.xat24cr.x1280gxy.x1h678fw.xcldk2z.xv6tirj.x1phvje8:has(span[class="x1v5yvga xxk0z11 xvy4d1p"]) {
+	padding-bottom: unset;
+}
+.x106a9eq.x1xnnf8n.x889kno.x1a8lsjc.x1hm9lzh.x1sa5p1d.x7zqoo0.xt1g1te.x1iz9ej4.x1ga13z8.x1n67ipk {
+	border-radius: 0;
+}
+
+/*File previews*/
+.x1n2onr6.x1brnrfz.x9f619.x78zum5.x6ikm8r.x10wlt62.xyi3aci.xwf5gio.x1p453bz.x1suzm8a,
+.x1n2onr6.xa1il55.x1bryted.x145uhy8.x1hmdwey.x1gk22k6.x6ikm8r.x10wlt62.x1od0jb8.xbrszos.xea3l6g.x18isctg.x2q3nzr {
+	border-radius: 0;
+}
+.x10l6tqk.x13vifvy.x1o0tod.xhtitgo.x9f619.xh8yej3.x5yr21d.x6ikm8r.x10wlt62.x47corl.x1whkhu0.x3emv5x.x1ydeqjr.xyg86qh.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x972fbf.x10w94by.x1qhh985.x14e42zd.x18p79ws.xc28ydg {
+	background-image: unset;
+}
+div[role="listitem"].x1n2onr6.xa1il55.x1bryted.x145uhy8.x1hmdwey.x1gk22k6.x6ikm8r.x10wlt62.x1od0jb8.xbrszos.xea3l6g.x18isctg.x2q3nzr .x1xsqp64.x18d0r48.x9f619.x1ypdohk.x5yr21d.xu96u03.x10l6tqk.x13vifvy.x1djylrx.xh8yej3.x1vjfegm {
+	border: unset;
+}
+div[role="listitem"] .x1xsqp64.x18d0r48.x9f619.x1ypdohk.x5yr21d.xu96u03.x10l6tqk.x13vifvy.x1djylrx.xh8yej3.x1vjfegm {
+	transform: unset;
+}
+/*Fixes white text*/
+.x78zum5.x1iyjqo2.xs83m0k.x1r8uery.xdt5ytf.x5yr21d .html-span.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x1lliihq.x193iq5w.x6ikm8r.x10wlt62.xlyipyv.xuxw1ft {
+	color: var(--cssgreen-4);
+}
+/*Changes colours on media selects*/
+div[role="listitem"] .x1n2onr6.x1ja2u2z.x9f619.x2lah0s.xamhcws.x1alpsbp.xlxy82.xyumdvf.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x6s0dn4.xl56j7k.x3nfvp2.xmix8c7.x1xp8n7a.xbrszos.xea3l6g.x18isctg.x2q3nzr.x1zfx7y.x1gj3efs.x151wx5t.xea0m3l.x1p8t8ri span:has(> svg) {
+	color: #fff;
+	background: var(--cssgreen-3);
+}
+.x10l6tqk.x13vifvy.x1o0tod.xhtitgo.x9f619.xh8yej3.x5yr21d.x6ikm8r.x10wlt62.x47corl.x1whkhu0.x3emv5x.x1ydeqjr.xyg86qh.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x18p79ws.xc28ydg.xvxx97b.x1028phh.x1es37l9.xq7a5ml {
+	border: 8px solid var(--cssgreen-9);
+}
+body.dark .x10l6tqk.x13vifvy.x1o0tod.xhtitgo.x9f619.xh8yej3.x5yr21d.x6ikm8r.x10wlt62.x47corl.x1whkhu0.x3emv5x.x1ydeqjr.xyg86qh.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x18p79ws.xc28ydg.xvxx97b.x1028phh.x1es37l9.xq7a5ml {
+	border-color: var(--cssgreen-8);
 }
 }
