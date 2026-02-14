@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Whatsapp'd Whatsapp
 @namespace      https://github.com/BleatBytes/whatsappd-whatsapp
-@version        1.5.3
+@version        1.5.4
 @description    Making Whatsapp Web look more like its pre-2025 self.
 @author         Valen
 @preprocessor	stylus
@@ -424,7 +424,7 @@ if (headerCol == "viridian") {
 }
 
 /*Header (sidebar) icons*/
-span[data-icon="community-refreshed-32"], span[data-icon="community-refreshed-filled-32"],
+/*span[data-icon="community-refreshed-32"], span[data-icon="community-refreshed-filled-32"],
 span[data-icon="status-refreshed"], span[data-icon="status-filled-refreshed"]
 span[data-icon="newsletter-unread-outline"], span[data-icon="newsletter-outline"], span[data-icon="settings-outline"], [aria-label="Chats"],
 ._ajvb > [aria-selected="true"],
@@ -433,9 +433,11 @@ span[data-icon="status-unread-tab"], span[data-icon="status-tab"]
 span[data-icon="newsletter-unread-tab"], span[data-icon="newsletter-tab"],
 span[data-icon="new-chat-tab"], span[data-icon="settings"], [aria-label="Chats"],
 span[data-icon="settings-refreshed"],span[data-icon="settings-filled-refreshed"],
-span[data-icon="media-refreshed"] {
+span[data-icon="media-refreshed"],*/
+.x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x2lwn1j.x1nhvcw1.xdt5ytf.x1cy8zhl.x1277o0a span:has(> svg){
 	color: #fff;
 }
+/*Unsure whether I should delete these or not, in favour of the more synthetic one. I'll leave them on just in case - I've already learnt my lesson with the "Whatsapp for Desktop" banner...*/
 
 /*Header (sidebar) icons' unread blob*/
 .x1rg5ohu.x173ssrc.x1xaadd7.x682dto.x1e01kqd.x12j7j87.x9bpaai.x1pg5gke.x1s688f.xo5v014.x1u28eo4.x2b8uid.x16dsc37.x18ba5f9.x1sbl2l.xy9co9w.x5r174s.x7h3shv, .x1rg5ohu.x11inojt.x16suv20.xo5v014.x1pse0pq.x2b8uid.x16dsc37.xyp3urf.x1lq5wgf.xgqcy7u.x30kzoy.x9jhf4c {
