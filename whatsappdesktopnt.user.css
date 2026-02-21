@@ -1,27 +1,30 @@
 /* ==UserStyle==
 @name           Whatsapp'd Whatsapp
 @namespace      https://github.com/BleatBytes/whatsappd-whatsapp
-@version        1.5.6
+@version        1.6.0
 @description    Making Whatsapp Web look more like its pre-2025 self.
 @author         Valen
 @preprocessor	stylus
 @updateURL 		https://raw.githubusercontent.com/BleatBytes/whatsappd-whatsapp/main/whatsappdesktopnt.user.css
 
-@var checkbox titleOne "-- GENERAL LAYOUT --" 1
-@var checkbox resizeYes "Resize window" 1
-@var select headerCol "Page header colour" ["default", "subtle", "viridian"]
-@var checkbox noLogo "Hide the WhatsApp logo from the header" 0
-@var number screenSize	"Pop-up menu horizontal fix. Change the numbers until you feel the right-click menu is close enough to your mouse on the X-axis." 950
-@var number heightSize "Pop-up menu vertical fix. Change the numbers until you feel the right-click menu is close enough to your mouse on the Y-axis." 350
+@var checkbox titleOne "⚒️ -- GENERAL LAYOUT -- ⚒️" 1
+@var checkbox resizeYes "  Resize window" 1
+@var number screenSize	"  Pop-up menu horizontal fix. Change the numbers until you feel the right-click menu is close enough to your mouse on the X-axis." 950
+@var number heightSize "  Pop-up menu vertical fix. Change the numbers until you feel the right-click menu is close enough to your mouse on the Y-axis." 350
 
-@var checkbox titleTwo "-- CHATS --" 1
-@var select chatFilters "Chat filter buttons" ["default", "subtle", "viridian", "hidden"]
-@var color checkedColor	"Read checkmark colour" #53bdeb
-@var color linkColor "Hyperlink colour" #1B8755
-@var color linkColorDark "Hyperlink colour (for dark mode)" #1B8755
-@var range audioOp "Avatar opacity when playing audio" [0, 0, 1, .1]
-@var select speedBottom "Move the audio track speed button to the bottom" ["middle", "top", "bottom"]
-@var checkbox littleTail "Add a 'tail' to the audio track speed button, like a speech bubble." 0
+@var checkbox titleTwo "⚒️ --INTERFACE -- ⚒️" 1
+@var select headerCol "  Page header colour" ["default", "subtle", "viridian"]
+@var checkbox noLogo "  Hide the WhatsApp logo from the header" 0
+@var checkbox noLines "  Hides vertical lines separating sections" 0
+@var select chatFilters "  Chat filter buttons" ["default", "subtle", "viridian", "hidden"]
+
+@var checkbox titleThree "⚒️ -- CHATS -- ⚒️" 1
+@var color checkedColor	"  Read checkmark colour" #53bdeb
+@var color linkColor "  Hyperlink colour" #1B8755
+@var color linkColorDark "  Hyperlink colour (for dark mode)" #1B8755
+@var range audioOp "  Avatar opacity when playing audio" [0, 0, 1, .1]
+@var select speedBottom "  Move the audio track speed button to the bottom" ["middle", "top", "bottom"]
+@var checkbox littleTail "  Add a 'tail' to the audio track speed button, like a speech bubble." 0
 
 @var checkbox titleZero "(Note that titles, the options in all caps, are only there to organize this options menu better and don't have any effect at all.)" 1
 
@@ -77,6 +80,12 @@ Changes to the body element itself; broad changes.
 	--cssred-1: #ea0038;
 	--cssred-2: #fb5061;
 }
+body {
+	--cssborder: rgba(0, 0, 0, .1);
+}
+body.dark {
+	--cssborder: rgba(255, 255, 255, .1);
+}
 if (resizeYes == 1) {
 	#app:not(:has(span[data-icon="wa-wordmark-refreshed"])) {
 		margin-top: unset;
@@ -108,7 +117,8 @@ body.dark ._aupe.copyable-text.xkrh14z[style*="color: var(--WDS-content-external
 }
 
 /*Main page desktop svgs*/
-span[data-icon="web-login-desktop-upsell-illustration"] svg, .x1rjt51p.x16w0wmm.x1g83kfv.x3qq2k7.x2x8art.x1qor8vf.xl7twdi.xyo0t3i.xvg22vi.xb0esv5.x98l61r.xviac27.x1ua1l7f.xlese2p.x1j3ira4.xrdqr27.x9f619.xg7h5cd.x78zum5.xdt5ytf.x6s0dn4 svg {
+span[data-icon="web-login-desktop-upsell-illustration"] svg, .x1rjt51p.x16w0wmm.x1g83kfv.x3qq2k7.x2x8art.x1qor8vf.xl7twdi.xyo0t3i.xvg22vi.xb0esv5.x98l61r.xviac27.x1ua1l7f.xlese2p.x1j3ira4.xrdqr27.x9f619.xg7h5cd.x78zum5.xdt5ytf.x6s0dn4 svg,
+span[data-icon="wds-ill-favorites"] svg {
 	filter: hue-rotate(20deg) brightness(87%) contrast(140%);
 }
 
@@ -150,7 +160,6 @@ if (resizeYes == 1){
 /*Primary*/
 button.xjb2p0i.x1ypdohk.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x-default-marker.xk50ysn.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.xsrozwr.x1w32m0z.xmigjs0.xrolgzk.x17m9png.x91sizk.x1vva9xg.x1jfkl46.x1jchvi3.x1d3mw78.xdd8jsf.x1wfn8jh.x126k92a.x6ikm8r.x10wlt62.x1n2onr6.x1vjfegm.xeh1a47.x1hql6x6.xr8f6zs.xy7xkci.x10j0mou.xine9no.xdfradd.x12ijfkc.x889kno.x1a8lsjc.x13jy36j.x64bnmy,
 .html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1n2onr6.x1ejq31n.x18oe1m7.x1sy0etr.xstzfhl.x1so62im.x1ja2u2z.x1ypdohk.x1s928wv.x1j6awrg.x4eaejv.x1wsn0xg.x1r0yslu.x2q1x1w.xapdjt.xr6f91l.x5rv0tg.x1akc3lz.xikp0eg.x1xl5mkn.x1mfml39.x1l5mzlr.xgmdoj8.x1f1wgk5.x1x3ic1u.x1abdmlv.xk4n5i7.x1wjp2x.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x3oybdh.x6nhntm.x2lah0s.xeq5yr9.x1lliihq.xk8lq53.x9f619.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x10w6t97.xdx6fka.xvtqlqk,
-.html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x1n2onr6.x1so62im.x1ja2u2z.x1ypdohk.x1s928wv.x1j6awrg.x4eaejv.x1wsn0xg.x1r0yslu.x2q1x1w.xapdjt.xr6f91l.x5rv0tg.x1akc3lz.xikp0eg.x1xl5mkn.x1mfml39.x1l5mzlr.xgmdoj8.x1f1wgk5.x1x3ic1u.xjbqb8w.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xo1mcw5.x1wjp2x.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x3oybdh.x6nhntm.xh8yej3.x1lliihq.xk8lq53.x9f619.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x1vqgdyp.xdx6fka.xvtqlqk,
 .html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1n2onr6.x1ejq31n.x18oe1m7.x1sy0etr.xstzfhl.x1so62im.x1ja2u2z.x1ypdohk.x1s928wv.x1j6awrg.x4eaejv.x1wsn0xg.x1r0yslu.x2q1x1w.xapdjt.xr6f91l.x5rv0tg.x1akc3lz.xikp0eg.x1xl5mkn.x1mfml39.x1l5mzlr.xgmdoj8.x1f1wgk5.x1x3ic1u.xfn3atn.x1pse0pq.x1yxkqql.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x3oybdh.x6nhntm.x2lah0s.x1lliihq.xk8lq53.x9f619.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x1vqgdyp.xyo0t3i.xb0esv5.xeq5yr9,
 .html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1n2onr6.x1ejq31n.x18oe1m7.x1sy0etr.xstzfhl.x1so62im.x1ja2u2z.x1ypdohk.x1s928wv.x1j6awrg.x4eaejv.x1wsn0xg.x1r0yslu.x2q1x1w.xapdjt.xr6f91l.x5rv0tg.x1akc3lz.xikp0eg.x1xl5mkn.x1mfml39.x1l5mzlr.xgmdoj8.x1f1wgk5.x1x3ic1u.xfn3atn.x1pse0pq.x1yxkqql.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6nhntm.x2lah0s.x1lliihq.xk8lq53.x9f619.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x1vqgdyp.xyo0t3i.xb0esv5.xeq5yr9.xfijbtm.xfenqrj.xgy0gl7.x19igvu.x89bh2v {
 	border: unset;
@@ -158,21 +167,35 @@ button.xjb2p0i.x1ypdohk.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x-default-marker.xk50ysn
 	background: var(--cssgreen-4);
 }
 .x140p0ai.x1gufx9m.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x193iq5w.xeuugli.x13faqbe.x1vvkbs.x1lliihq.x1fj9vlw.xk4n5i7.x87ps6o.x1f6kntn.xjb2p0i.xfjzk2p.x8r4c90.x1ic7a3i.x12xpedu,
-.x140p0ai.x1gufx9m.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x193iq5w.xeuugli.x13faqbe.x1vvkbs.x1lliihq.x1fj9vlw.xo1mcw5.x87ps6o.x1f6kntn.xjb2p0i.xfjzk2p.x8r4c90.x1ic7a3i.x12xpedu,
 .x140p0ai.x1gufx9m.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x193iq5w.xeuugli.x13faqbe.x1vvkbs.x1lliihq.x1fj9vlw.x1pse0pq.x87ps6o.x1f6kntn.xjb2p0i.xfjzk2p.x8r4c90.x1ic7a3i.x12xpedu {
 	color: #fff!important;
 }
 /*Secondary*/
-button.html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1n2onr6.x1ejq31n.x18oe1m7.x1sy0etr.xstzfhl.x1so62im.x1syfmzz.x1ja2u2z.x1ypdohk.x1s928wv.x1j6awrg.x4eaejv.x1wsn0xg.x1r0yslu.x2q1x1w.xapdjt.xr6f91l.x5rv0tg.x1akc3lz.xikp0eg.x1xl5mkn.x1mfml39.x1l5mzlr.xgmdoj8.x1f1wgk5.x1x3ic1u.xjbqb8w.xo1mcw5.xy0j11r.xg268so.x1b4bgnk.x1wjp2x.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x2lah0s.x1lliihq.xk8lq53.x9f619.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x1vqgdyp.xvtqlqk.xdx6fka.xeq5yr9,
 .html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x1n2onr6.x1so62im.x1ja2u2z.x1ypdohk.x1s928wv.x1j6awrg.x4eaejv.x1wsn0xg.x1r0yslu.x2q1x1w.xapdjt.xr6f91l.x5rv0tg.x1akc3lz.xikp0eg.x1xl5mkn.x1mfml39.x1l5mzlr.xgmdoj8.x1f1wgk5.x1x3ic1u.xjbqb8w.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xo1mcw5.x1wjp2x.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x3oybdh.x6nhntm.x2lah0s.xeq5yr9.x1lliihq.xk8lq53.x9f619.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x1vqgdyp.xyo0t3i.xb0esv5 {
 	border: unset;
 	color: #fff!important;
 	background: var(--cssgreen-1);
 }
 body.dark {
-	button.html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1n2onr6.x1ejq31n.x18oe1m7.x1sy0etr.xstzfhl.x1so62im.x1syfmzz.x1ja2u2z.x1ypdohk.x1s928wv.x1j6awrg.x4eaejv.x1wsn0xg.x1r0yslu.x2q1x1w.xapdjt.xr6f91l.x5rv0tg.x1akc3lz.xikp0eg.x1xl5mkn.x1mfml39.x1l5mzlr.xgmdoj8.x1f1wgk5.x1x3ic1u.xjbqb8w.xo1mcw5.xy0j11r.xg268so.x1b4bgnk.x1wjp2x.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x2lah0s.x1lliihq.xk8lq53.x9f619.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x1vqgdyp.xvtqlqk.xdx6fka.xeq5yr9,
-.html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x1n2onr6.x1so62im.x1ja2u2z.x1ypdohk.x1s928wv.x1j6awrg.x4eaejv.x1wsn0xg.x1r0yslu.x2q1x1w.xapdjt.xr6f91l.x5rv0tg.x1akc3lz.xikp0eg.x1xl5mkn.x1mfml39.x1l5mzlr.xgmdoj8.x1f1wgk5.x1x3ic1u.xjbqb8w.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xo1mcw5.x1wjp2x.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x3oybdh.x6nhntm.x2lah0s.xeq5yr9.x1lliihq.xk8lq53.x9f619.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x1vqgdyp.xyo0t3i.xb0esv5 {
+	.html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x1n2onr6.x1so62im.x1ja2u2z.x1ypdohk.x1s928wv.x1j6awrg.x4eaejv.x1wsn0xg.x1r0yslu.x2q1x1w.xapdjt.xr6f91l.x5rv0tg.x1akc3lz.xikp0eg.x1xl5mkn.x1mfml39.x1l5mzlr.xgmdoj8.x1f1wgk5.x1x3ic1u.xjbqb8w.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xo1mcw5.x1wjp2x.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x3oybdh.x6nhntm.x2lah0s.xeq5yr9.x1lliihq.xk8lq53.x9f619.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x1vqgdyp.xyo0t3i.xb0esv5 {
 		background-color: var(--cssgreen-2);
+	}
+}
+/*Tertiary (no background)*/
+button.html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1n2onr6.x1ejq31n.x18oe1m7.x1sy0etr.xstzfhl.x1so62im.x1syfmzz.x1ja2u2z.x1ypdohk.x1s928wv.x1j6awrg.x4eaejv.x1wsn0xg.x1r0yslu.x2q1x1w.xapdjt.xr6f91l.x5rv0tg.x1akc3lz.xikp0eg.x1xl5mkn.x1mfml39.x1l5mzlr.xgmdoj8.x1f1wgk5.x1x3ic1u.xjbqb8w.xo1mcw5.xy0j11r.xg268so.x1b4bgnk.x1wjp2x.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x2lah0s.x1lliihq.xk8lq53.x9f619.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x1vqgdyp.xvtqlqk.xdx6fka.xeq5yr9,
+.html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x1n2onr6.x1so62im.x1ja2u2z.x1ypdohk.x1s928wv.x1j6awrg.x4eaejv.x1wsn0xg.x1r0yslu.x2q1x1w.xapdjt.xr6f91l.x5rv0tg.x1akc3lz.xikp0eg.x1xl5mkn.x1mfml39.x1l5mzlr.xgmdoj8.x1f1wgk5.x1x3ic1u.xjbqb8w.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xo1mcw5.x1wjp2x.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x3oybdh.x6nhntm.xh8yej3.x1lliihq.xk8lq53.x9f619.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x1vqgdyp.xdx6fka.xvtqlqk {
+	color: var(--cssgreen-2)!important;
+	background: unset;
+	border: unset;
+}
+.x140p0ai.x1gufx9m.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x193iq5w.xeuugli.x13faqbe.x1vvkbs.x1lliihq.x1fj9vlw.xo1mcw5.x87ps6o.x1f6kntn.xjb2p0i.xfjzk2p.x8r4c90.x1ic7a3i.x12xpedu {
+	color: var(--cssgreen-2)!important;
+}
+body.dark {
+	button.html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1n2onr6.x1ejq31n.x18oe1m7.x1sy0etr.xstzfhl.x1so62im.x1syfmzz.x1ja2u2z.x1ypdohk.x1s928wv.x1j6awrg.x4eaejv.x1wsn0xg.x1r0yslu.x2q1x1w.xapdjt.xr6f91l.x5rv0tg.x1akc3lz.xikp0eg.x1xl5mkn.x1mfml39.x1l5mzlr.xgmdoj8.x1f1wgk5.x1x3ic1u.xjbqb8w.xo1mcw5.xy0j11r.xg268so.x1b4bgnk.x1wjp2x.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x2lah0s.x1lliihq.xk8lq53.x9f619.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x1vqgdyp.xvtqlqk.xdx6fka.xeq5yr9,
+	.html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.x18d9i69.x1n2onr6.x1so62im.x1ja2u2z.x1ypdohk.x1s928wv.x1j6awrg.x4eaejv.x1wsn0xg.x1r0yslu.x2q1x1w.xapdjt.xr6f91l.x5rv0tg.x1akc3lz.xikp0eg.x1xl5mkn.x1mfml39.x1l5mzlr.xgmdoj8.x1f1wgk5.x1x3ic1u.xjbqb8w.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xo1mcw5.x1wjp2x.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x3oybdh.x6nhntm.xh8yej3.x1lliihq.xk8lq53.x9f619.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x1vqgdyp.xdx6fka.xvtqlqk,
+.x140p0ai.x1gufx9m.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x193iq5w.xeuugli.x13faqbe.x1vvkbs.x1lliihq.x1fj9vlw.xo1mcw5.x87ps6o.x1f6kntn.xjb2p0i.xfjzk2p.x8r4c90.x1ic7a3i.x12xpedu {
+		color: var(--cssgreen-1)!important;
 	}
 }
 
@@ -226,6 +249,43 @@ button.xjb2p0i.xk390pu.x1heor9g.x1ypdohk.xjbqb8w.x972fbf.x10w94by.x1qhh985.x14e4
 .x78zum5.xdt5ytf.x1iyjqo2.x2lah0s.xdl72j9.x1odjw0f.xh8yej3 .xsm26vf.x106a9eq.x1xnnf8n.x889kno.x1a8lsjc {
 	display: none;
 }
+/*Separators for contacts list*/
+.x1n2onr6.x1n2onr6.xupqr0c.x78zum5.x1r8uery.x1iyjqo2.xdt5ytf.x6ikm8r.x1odjw0f.x1hc1fzr.x1anedsm.x1280gxy .x10l6tqk.xh8yej3.x1g42fcv:not(:has(div[class="x4f6e3x x6ikm8r x10wlt62 x1280gxy x1n2onr6"])) {
+	margin-top: -20px;
+}
+/*Title "Whatsapp contacts, A, B..."*/
+.x10l6tqk.xh8yej3.x1g42fcv:has(div[class="x4f6e3x x6ikm8r x10wlt62 x1280gxy x1n2onr6"]) {
+	height: auto!important;
+	.x4f6e3x.x6ikm8r.x10wlt62.x1280gxy.x1n2onr6 {
+		height: auto;
+		background: var(--cssgreen-9);
+	}
+	.x9f619.x4f6e3x.x9orja2.xyri2b.xohmsfg.xzm8p2n.x1s688f.xhslqc4,
+ 	.x9f619.x4f6e3x.x9orja2.xyri2b.xohmsfg.xzm8p2n.xtvhhri.x1s688f.xhslqc4 {
+		padding-top: var(--chat-spacing);
+		padding-bottom: var(--chat-spacing);
+		height: auto;
+	}
+}
+body.dark .x10l6tqk.xh8yej3.x1g42fcv:has(div[class="x4f6e3x x6ikm8r x10wlt62 x1280gxy x1n2onr6"]) {
+	.x4f6e3x.x6ikm8r.x10wlt62.x1280gxy.x1n2onr6 {
+		background: var(--cssgreen-8);
+	}
+}
+/*last element before the next separator*/
+/*.x10l6tqk.xh8yej3.x1g42fcv:has(+ div[class="x10l6tqk xh8yej3 x1g42fcv"] div[class="x4f6e3x x6ikm8r x10wlt62 x1280gxy x1n2onr6"]) {
+	border-bottom: 2px solid #ff00004d;
+	div[class="_ak72 false false false _ak73 _asiw _ap1- _ap1_"] {
+		background: #f1c1ff;
+	}
+}*/
+/*First element after separator*/
+/*.x10l6tqk.xh8yej3.x1g42fcv:has(div[class="x4f6e3x x6ikm8r x10wlt62 x1280gxy x1n2onr6"]) + .x10l6tqk.xh8yej3.x1g42fcv {
+	div[class="_ak72 false false false _ak73 _asiw _ap1- _ap1_"] {
+		background: #f290ba;
+	}
+}*/
+
 /*Hover on log out button*/
 button.xjb2p0i.xk390pu.x1heor9g.x1ypdohk.xjbqb8w.x972fbf.x10w94by.x1qhh985.x14e42zd.x1fmog5m.xu25z0z.x140muxe.xo1y3bh.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1yc453h.x6ikm8r.x10wlt62.x78zum5.x1iyjqo2.x2lah0s.xdl72j9.xkh2ocl.xh8yej3:last-of-type .xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x1nhvcw1.x1q0g3np.x9f619.x1iyjqo2.x1qjc9v5.x879a55.x16ydxro.xyo1k6t.xlr9sxt.xvvg52n.xwd4zgb.xq8v1ta.x17gydlx.x1jsj9aw:hover {
 	background-color: #ea00381a
@@ -270,7 +330,43 @@ body.dark {
  INTERFACE
 ============
 */
-/*Makes hte little icons on new unopened sections greener*/
+/*Those tiny little shadows on sections*/
+if (noLines == 1) {
+	.x1fi5f43.x1fi5f43, .x1fi5f43.x1fi5f43:root {
+		--WDS-lines-divider: transparent!important;
+	}
+	.x18pi947 {
+		padding-inline-start: 0;
+	}
+	.xpilrb4 {
+		border-inline-start-width: 0;
+	}
+	._aigw._as6h.false.xevlxbw.x9f619.x1n2onr6.x5yr21d.x17dzmu4.x1i1dayz.x2ipvbc.xjdofhw.x78zum5.xdt5ytf.x570efc.x18dvir5.xxljpkc.xwfak60.x6ikm8r.x10wlt62.x1oy9qf3.xpilrb4.x1t7ytsu.x1vb5itz {
+		border-left: unset!important;
+	}
+	.x2ed6v8 {
+		background: rgba(0, 0, 0, .1);
+	}
+	.x120ee7l {
+		border-bottom-color: rgba(0, 0, 0, .1);
+	}
+	.dark {
+		.x2ed6v8 {
+			background: rgba(255, 255, 255, .1);
+		}
+		.x120ee7l {
+			border-bottom-color: rgba(255, 255, 255, .1);
+		}
+	}
+	#side {
+		box-shadow: unset!important;
+	}
+	.x9f619.x1n2onr6.xupqr0c.x5yr21d.x6ikm8r.x10wlt62.x17dzmu4.x1i1dayz.x2ipvbc.xjdofhw.xyyilfv.x1iyjqo2:has(+ div[class="_aig- _as6h x9f619 x1n2onr6 x5yr21d x6ikm8r x10wlt62 x17dzmu4 x1i1dayz x2ipvbc xjdofhw xpilrb4 x1t7ytsu x1vb5itz x1c4vz4f x2lah0s x1oy9qf3 xwfak60 x5hsz1j x17dq4o0 x10e4vud"]) {
+		margin-right: -1px!important;
+	}
+}
+
+/*Makes the little icons on new unopened sections greener*/
 ._al_d span[data-icon="status-filled-refreshed"] svg,
 ._al_d span[data-icon="newsletter"] svg, 
 ._al_d span[data-icon="community-filled-refreshed"] svg,
@@ -284,6 +380,23 @@ body.dark {
 	._al_d span[data-icon="settings-filled-refreshed"] svg {
 		color: var(--cssgreen-2);
 	}
+}
+
+/*Normalizes colours on green and white icons*/
+path[d="M90 0C1.43051e-05 0 0 0 0 90C0 180 1.43051e-05 180 90 180C180 180 180 180 180 90C180 0 180 0 90 0Z"] {
+	fill: var(--cssgreen-3);
+}
+.x78zum5.x6s0dn4.xl56j7k.x1pse0pq.xe5due1.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p.x15jighw.x112a4uq,
+.x78zum5.x6s0dn4.xl56j7k.x1q0g3np.xh8yej3.x5yr21d.x6ikm8r.x10wlt62.xvs2etk.xg3wpu6.x1jwbhkm.xgg4q86.xfn3atn {
+	background: var(--cssgreen-3);
+}
+path[d="M86.0728 25.3655C86.1287 25.7634 86.2023 26.1501 86.2934 26.5313C86.3389 26.7247 86.3886 26.9126 86.4426 27.0949C86.5491 27.4658 86.6736 27.831 86.8156 28.1888C87.0246 28.7152 87.2706 29.2248 87.5516 29.7138C87.7381 30.0342 87.939 30.3491 88.1538 30.6475C88.7962 31.5513 89.5655 32.3502 90.4362 33.0177C91.0223 33.4638 91.6483 33.8505 92.3056 34.1725C92.8094 34.4169 93.3294 34.6237 93.8617 34.7913C94.2205 34.9018 94.5877 34.9957 94.9632 35.0731C95.7326 35.2269 96.5143 35.3046 97.2978 35.3051C103.567 35.3051 108.649 30.0362 108.649 23.5368C108.649 17.0373 103.567 11.7684 97.2978 11.7684C96.5142 11.7662 95.7322 11.8439 94.9632 12.0005C94.5915 12.0741 94.2238 12.1682 93.8617 12.2822C93.3296 12.448 92.8095 12.6529 92.3056 12.8955C90.663 13.6984 89.2368 14.9092 88.1538 16.4205C87.9406 16.7244 87.7381 17.0338 87.5516 17.3598C87.2695 17.8481 87.0235 18.3579 86.8156 18.8847C86.6755 19.2383 86.5492 19.6029 86.4426 19.9731C86.3883 20.161 86.3385 20.3488 86.2934 20.5367C86.2023 20.9179 86.1287 21.3046 86.0728 21.7024C85.9037 22.9172 85.9037 24.1508 86.0728 25.3655ZM33.9272 25.3655C33.8739 25.7634 33.7977 26.1501 33.7071 26.5313C33.6617 26.7247 33.6119 26.9126 33.5579 27.0949C33.4514 27.4658 33.3269 27.8309 33.1849 28.1888C32.9755 28.7151 32.7294 29.2247 32.4484 29.7138C32.2624 30.0342 32.0615 30.3491 31.8467 30.6475C31.204 31.551 30.4347 32.3499 29.5642 33.0177C28.9782 33.4638 28.3521 33.8505 27.6948 34.1725C27.191 34.4169 26.6709 34.6237 26.1387 34.7913C25.7795 34.9018 25.4123 34.9957 25.0371 35.0731C24.2677 35.2268 23.486 35.3045 22.7024 35.3051C16.4334 35.3051 11.3514 30.0362 11.3514 23.5368C11.3514 17.0373 16.4334 11.7684 22.7024 11.7684C23.4861 11.7663 24.2681 11.844 25.0371 12.0005C25.4089 12.0742 25.7765 12.1682 26.1387 12.2822C26.6708 12.448 27.1908 12.6529 27.6948 12.8955C29.3375 13.6984 30.7636 14.9092 31.8467 16.4205C32.0599 16.7244 32.2624 17.0338 32.4484 17.3598C32.7304 17.8482 32.9766 18.3579 33.1849 18.8847C33.325 19.2383 33.4513 19.6029 33.5579 19.9731C33.6116 20.161 33.6613 20.3488 33.7071 20.5367C33.7977 20.9179 33.8718 21.3046 33.9272 21.7024C34.0963 22.9172 34.0963 24.1508 33.9272 25.3655ZM119.343 54.0764C119.204 53.836 119.05 53.5733 118.862 53.2826C118.66 52.9695 118.432 52.6341 118.171 52.2764C117.909 51.9186 117.62 51.5385 117.295 51.1472C116.97 50.7559 116.615 50.3534 116.224 49.9398C114.625 48.2625 112.798 46.8262 110.799 45.6746C110.168 45.3056 109.497 44.9591 108.788 44.6292C108.767 44.6181 108.748 44.6125 108.728 44.6013C100.676 41.1728 91.6054 41.1728 83.5538 44.6013C83.4404 44.6516 83.3336 44.7075 83.2235 44.7634C83.0429 44.8472 82.8778 44.9423 82.7027 45.0317C82.8007 45.0876 82.9003 45.1379 82.9978 45.1938C84.9925 46.3455 86.8856 47.6696 88.6562 49.1516C89.8126 50.1167 90.913 51.1488 91.952 52.2428C92.5945 52.9136 93.1818 53.5788 93.7185 54.2273C94.269 54.8925 94.7513 55.513 95.1817 56.1055C95.6249 56.7148 96.0075 57.2794 96.3488 57.7993C96.6719 58.3024 96.9455 58.7496 97.1817 59.1633C97.6294 59.9211 97.9634 60.7426 98.1726 61.6005L98.2601 62.2042H116.6C118.478 62.2042 120 60.682 120 58.8042V55.3676C119.81 54.9225 119.591 54.491 119.343 54.0764ZM77.6389 15.6162C77.5508 14.9906 77.435 14.382 77.292 13.7846C77.2208 13.4859 77.1425 13.1873 77.0577 12.8942C76.8886 12.3081 76.6929 11.7389 76.4727 11.181C76.1444 10.3541 75.7576 9.55357 75.3153 8.78587C75.0228 8.27866 74.7075 7.78837 74.3694 7.31498C72.6729 4.93631 70.4305 3.03412 67.8456 1.78084C67.0544 1.39541 66.2367 1.07141 65.3992 0.811523C64.8349 0.63682 64.2576 0.48466 63.6683 0.366313C62.4595 0.123014 61.231 0 59.9997 0C49.8923 0 42.1622 8.01379 42.1622 18.496C42.1622 28.9781 49.8923 36.9863 59.9997 36.9863C61.231 36.9863 62.4595 36.8633 63.6683 36.62C64.2576 36.5016 64.8349 36.3495 65.3992 36.1748C66.2367 35.9149 67.0544 35.5909 67.8456 35.2055C70.4305 33.9522 72.6729 32.05 74.3694 29.6713C74.7072 29.1979 75.0225 28.7076 75.3153 28.2004C75.7576 27.4327 76.1444 26.6322 76.4727 25.8053C76.6902 25.2474 76.8886 24.6726 77.0577 24.0921C77.1425 23.799 77.2208 23.5004 77.292 23.2017C77.435 22.6043 77.5508 21.9957 77.6389 21.3701C77.9042 19.462 77.9042 17.5243 77.6389 15.6162ZM93.0965 61.4246C92.8978 61.0703 92.6696 60.6818 92.4021 60.2532C92.1144 59.7961 91.7847 59.299 91.4118 58.7733C91.039 58.2476 90.623 57.6876 90.1612 57.1162C89.6993 56.5448 89.1905 55.9448 88.6326 55.3448C87.7365 54.3736 86.7887 53.456 85.7938 52.5964C84.2613 51.2774 82.6237 50.0979 80.8992 49.0708C79.999 48.5337 79.0431 48.0195 78.0315 47.5395C78.0039 47.522 77.9751 47.5067 77.9453 47.4938C73.2477 45.2653 67.3414 43.7111 59.9989 43.7111C52.6564 43.7111 46.7496 45.2653 42.0526 47.4938C41.8888 47.5681 41.7398 47.6538 41.5803 47.7338C40.8941 48.0709 40.2347 48.4252 39.6009 48.7851C39.2573 48.9851 38.9214 49.1851 38.5931 49.3851C37.0554 50.3392 35.5882 51.4126 34.204 52.5964C33.209 53.4558 32.2612 54.3734 31.3652 55.3448C30.8084 55.9448 30.3001 56.5391 29.8367 57.1162C29.3732 57.6933 28.9583 58.2419 28.5854 58.7733C28.2126 59.3047 27.8834 59.7961 27.5957 60.2532C27.3282 60.6818 27.1 61.0703 26.9018 61.4246C26.8833 61.4521 26.8664 61.4807 26.8511 61.5103C26.6425 61.8817 26.4728 62.2074 26.3385 62.476C26.0699 63.0131 25.9459 63.3159 25.9459 63.3159V70.5726C25.9459 72.4504 27.4682 73.9726 29.3459 73.9726H90.6541C92.5318 73.9726 94.0541 72.4504 94.0541 70.5726V63.3159C93.7702 62.6666 93.4505 62.035 93.0965 61.4246ZM21.7773 61.6062C21.8277 61.1833 21.9651 60.7758 22.1807 60.4102C22.3487 60.086 22.4749 59.6948 22.7367 59.2421C23.0271 58.7447 23.2558 58.3032 23.5732 57.8057C23.9132 57.2804 24.2785 56.7159 24.7161 56.1179C25.1536 55.5199 25.6319 54.8883 26.1698 54.24C26.7076 53.5917 27.2983 52.921 27.9447 52.2392C30.4236 49.6351 33.2397 47.3846 36.3159 45.5492C36.6355 45.3592 36.965 45.1692 37.2973 44.9847C37.1535 44.9121 37.0218 44.8339 36.8724 44.7668C36.7622 44.7109 36.652 44.655 36.5418 44.6047C32.5724 42.8404 28.2751 41.9636 23.9418 42.0338C19.6088 41.9636 15.3116 42.8405 11.3424 44.6047C11.3215 44.6159 11.3028 44.6215 11.2818 44.6326C10.5721 44.9624 9.90032 45.3089 9.26825 45.6778C8.05739 46.376 6.90772 47.1782 5.83185 48.0754C5.1338 48.66 4.46803 49.2832 3.83757 49.9421C3.44632 50.3557 3.08887 50.7581 2.76521 51.1493C2.44064 51.5406 2.14858 51.9206 1.88682 52.2783C1.62507 52.636 1.39363 52.9713 1.19139 53.2843C1.00403 53.5749 0.826588 53.8376 0.68717 54.0779C0.224832 54.8716 0 55.369 0 55.369V58.8042C0 60.682 1.52223 62.2042 3.4 62.2042H21.7371L21.7773 61.6062Z"],
+path[d="M18 11H16C15.7167 11 15.4792 10.9042 15.2875 10.7125C15.0958 10.5208 15 10.2833 15 10C15 9.71667 15.0958 9.47917 15.2875 9.2875C15.4792 9.09583 15.7167 9 16 9H18V7C18 6.71667 18.0958 6.47917 18.2875 6.2875C18.4792 6.09583 18.7167 6 19 6C19.2833 6 19.5208 6.09583 19.7125 6.2875C19.9042 6.47917 20 6.71667 20 7V9H22C22.2833 9 22.5208 9.09583 22.7125 9.2875C22.9042 9.47917 23 9.71667 23 10C23 10.2833 22.9042 10.5208 22.7125 10.7125C22.5208 10.9042 22.2833 11 22 11H20V13C20 13.2833 19.9042 13.5208 19.7125 13.7125C19.5208 13.9042 19.2833 14 19 14C18.7167 14 18.4792 13.9042 18.2875 13.7125C18.0958 13.5208 18 13.2833 18 13V11ZM9 12C7.9 12 6.95833 11.6083 6.175 10.825C5.39167 10.0417 5 9.1 5 8C5 6.9 5.39167 5.95833 6.175 5.175C6.95833 4.39167 7.9 4 9 4C10.1 4 11.0417 4.39167 11.825 5.175C12.6083 5.95833 13 6.9 13 8C13 9.1 12.6083 10.0417 11.825 10.825C11.0417 11.6083 10.1 12 9 12ZM1 18V17.2C1 16.6333 1.14583 16.1125 1.4375 15.6375C1.72917 15.1625 2.11667 14.8 2.6 14.55C3.63333 14.0333 4.68333 13.6458 5.75 13.3875C6.81667 13.1292 7.9 13 9 13C10.1 13 11.1833 13.1292 12.25 13.3875C13.3167 13.6458 14.3667 14.0333 15.4 14.55C15.8833 14.8 16.2708 15.1625 16.5625 15.6375C16.8542 16.1125 17 16.6333 17 17.2V18C17 18.55 16.8042 19.0208 16.4125 19.4125C16.0208 19.8042 15.55 20 15 20H3C2.45 20 1.97917 19.8042 1.5875 19.4125C1.19583 19.0208 1 18.55 1 18Z"],
+path[d="M7 17C5.61667 17 4.4375 16.5125 3.4625 15.5375C2.4875 14.5625 2 13.3833 2 12C2 10.6167 2.4875 9.4375 3.4625 8.4625C4.4375 7.4875 5.61667 7 7 7H10C10.2833 7 10.5208 7.09583 10.7125 7.2875C10.9042 7.47917 11 7.71667 11 8C11 8.28333 10.9042 8.52083 10.7125 8.7125C10.5208 8.90417 10.2833 9 10 9H7C6.16667 9 5.45833 9.29167 4.875 9.875C4.29167 10.4583 4 11.1667 4 12C4 12.8333 4.29167 13.5417 4.875 14.125C5.45833 14.7083 6.16667 15 7 15H10C10.2833 15 10.5208 15.0958 10.7125 15.2875C10.9042 15.4792 11 15.7167 11 16C11 16.2833 10.9042 16.5208 10.7125 16.7125C10.5208 16.9042 10.2833 17 10 17H7ZM9 13C8.71667 13 8.47917 12.9042 8.2875 12.7125C8.09583 12.5208 8 12.2833 8 12C8 11.7167 8.09583 11.4792 8.2875 11.2875C8.47917 11.0958 8.71667 11 9 11H15C15.2833 11 15.5208 11.0958 15.7125 11.2875C15.9042 11.4792 16 11.7167 16 12C16 12.2833 15.9042 12.5208 15.7125 12.7125C15.5208 12.9042 15.2833 13 15 13H9ZM14 17C13.7167 17 13.4792 16.9042 13.2875 16.7125C13.0958 16.5208 13 16.2833 13 16C13 15.7167 13.0958 15.4792 13.2875 15.2875C13.4792 15.0958 13.7167 15 14 15H17C17.8333 15 18.5417 14.7083 19.125 14.125C19.7083 13.5417 20 12.8333 20 12C20 11.1667 19.7083 10.4583 19.125 9.875C18.5417 9.29167 17.8333 9 17 9H14C13.7167 9 13.4792 8.90417 13.2875 8.7125C13.0958 8.52083 13 8.28333 13 8C13 7.71667 13.0958 7.47917 13.2875 7.2875C13.4792 7.09583 13.7167 7 14 7H17C18.3833 7 19.5625 7.4875 20.5375 8.4625C21.5125 9.4375 22 10.6167 22 12C22 13.3833 21.5125 14.5625 20.5375 15.5375C19.5625 16.5125 18.3833 17 17 17H14Z"],
+path[d="M12.5 11.95C12.9833 11.4167 13.3542 10.8083 13.6125 10.125C13.8708 9.44167 14 8.73333 14 8C14 7.26667 13.8708 6.55833 13.6125 5.875C13.3542 5.19167 12.9833 4.58333 12.5 4.05C13.5 4.18333 14.3333 4.625 15 5.375C15.6667 6.125 16 7 16 8C16 9 15.6667 9.875 15 10.625C14.3333 11.375 13.5 11.8167 12.5 11.95ZM17.45 20C17.6333 19.7 17.7708 19.3792 17.8625 19.0375C17.9542 18.6958 18 18.35 18 18V17C18 16.4 17.8667 15.8292 17.6 15.2875C17.3333 14.7458 16.9833 14.2667 16.55 13.85C17.4 14.15 18.1875 14.5375 18.9125 15.0125C19.6375 15.4875 20 16.15 20 17V18C20 18.55 19.8042 19.0208 19.4125 19.4125C19.0208 19.8042 18.55 20 18 20H17.45ZM20 11H19C18.7167 11 18.4792 10.9042 18.2875 10.7125C18.0958 10.5208 18 10.2833 18 10C18 9.71667 18.0958 9.47917 18.2875 9.2875C18.4792 9.09583 18.7167 9 19 9H20V8C20 7.71667 20.0958 7.47917 20.2875 7.2875C20.4792 7.09583 20.7167 7 21 7C21.2833 7 21.5208 7.09583 21.7125 7.2875C21.9042 7.47917 22 7.71667 22 8V9H23C23.2833 9 23.5208 9.09583 23.7125 9.2875C23.9042 9.47917 24 9.71667 24 10C24 10.2833 23.9042 10.5208 23.7125 10.7125C23.5208 10.9042 23.2833 11 23 11H22V12C22 12.2833 21.9042 12.5208 21.7125 12.7125C21.5208 12.9042 21.2833 13 21 13C20.7167 13 20.4792 12.9042 20.2875 12.7125C20.0958 12.5208 20 12.2833 20 12V11ZM8 12C6.9 12 5.95833 11.6083 5.175 10.825C4.39167 10.0417 4 9.1 4 8C4 6.9 4.39167 5.95833 5.175 5.175C5.95833 4.39167 6.9 4 8 4C9.1 4 10.0417 4.39167 10.825 5.175C11.6083 5.95833 12 6.9 12 8C12 9.1 11.6083 10.0417 10.825 10.825C10.0417 11.6083 9.1 12 8 12ZM0 18V17.2C0 16.6333 0.145833 16.1125 0.4375 15.6375C0.729167 15.1625 1.11667 14.8 1.6 14.55C2.63333 14.0333 3.68333 13.6458 4.75 13.3875C5.81667 13.1292 6.9 13 8 13C9.1 13 10.1833 13.1292 11.25 13.3875C12.3167 13.6458 13.3667 14.0333 14.4 14.55C14.8833 14.8 15.2708 15.1625 15.5625 15.6375C15.8542 16.1125 16 16.6333 16 17.2V18C16 18.55 15.8042 19.0208 15.4125 19.4125C15.0208 19.8042 14.55 20 14 20H2C1.45 20 0.979167 19.8042 0.5875 19.4125C0.195833 19.0208 0 18.55 0 18Z"],
+span[data-icon="community-filled-refreshed"] {
+	color: #fff;
+	fill: #fff;
 }
 
 /*Hides the new outline around selected chat*/
@@ -312,16 +425,35 @@ body:not(.dark) .x140p0ai.x1gufx9m.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x
 	color: #fff;
 }
 
+/*Header modifications*/
+if (headerCol != "default") {
+	.x18pi947 {
+		padding-inline-start: 0;
+	}
+	.xpilrb4 {
+		border-inline-start-width: 0;
+	}
+	._ak9t, .x1n2onr6.x1c4vz4f.x2lah0s.xdl72j9.x1280gxy.xat24cr, .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xexx8yu.x1xnnf8n.x18d9i69.x106a9eq.xeuugli.x2lwn1j.x1nhvcw1.x1q0g3np.x1n2onr6.xh8yej3.x9f619.xdd8jsf.x7a106z, .x1n2onr6.xupqr0c.x78zum5.x1r8uery.x1iyjqo2.xdt5ytf.x6ikm8r.x1odjw0f.x1hc1fzr:not(:has(div[class="_al_c"])) {
+		margin-top: 10px;
+	}
+	#side {
+		box-shadow: 1px 0 0 var(--cssborder), -1px 0 0 var(--cssborder);
+	}
+	if (noLines == 0) {
+			.x9f619.x1n2onr6.xupqr0c.x5yr21d.x6ikm8r.x10wlt62.x17dzmu4.x1i1dayz.x2ipvbc.xjdofhw.xyyilfv.x1iyjqo2:has(+ div[class="_aig- _as6h x9f619 x1n2onr6 x5yr21d x6ikm8r x10wlt62 x17dzmu4 x1i1dayz x2ipvbc xjdofhw xpilrb4 x1t7ytsu x1vb5itz x1c4vz4f x2lah0s x1oy9qf3 xwfak60 x5hsz1j x17dq4o0 x10e4vud"])  {
+			margin-right: -1px;
+			.x1n2onr6.x1vjfegm.x1cqoux5.x14yy4lh {
+				margin-right: 1px;
+				box-shadow: 1px 0 0 var(--cssborder);
+			}
+		}
+	}
+}
 if (headerCol == "viridian") {
-	/* body:has(span[class="x10l6tqk x13vifvy xtijo5x x1ey2m1c x1o0tod"]:not(:has(> div)))  */
 	.x570efc.x9f619.x78zum5.x1okw0bk.x6s0dn4.x1peatla.x14ug900.x1280gxy.x889kno.x1a8lsjc.x106a9eq.x1xnnf8n, .x1n2onr6.x9f619.x78zum5.x6s0dn4.xh8yej3.x7j6532.x1j6awrg.x1te75w5.x1iygr5g.x4eaejv.xcock1l.xl9llhp.x1qj619r.x1r9ni5o.xb1pvdl.x42zw1d.x889kno.x1a8lsjc.xf7dkkf.xv54qhq.x1s928wv.x1h1zc6f.x1280gxy.xstzfhl.x11iowje,
  	.xjb2p0i.xk390pu.x1heor9g.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6s0dn4.x1280gxy.x1ubxc9n.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1s70e7g.x1ypdohk.x1s07b3s.x78zum5.x1ba4aug.x1hc1fzr.x1lfpgzf.x16ovd2e.x12xbjc7.xdx6fka.xvtqlqk.x150mmf0.xqf2s3x,
  header.x570efc.x9f619.x78zum5.x1okw0bk.x6s0dn4.x1peatla.x14ug900.x1280gxy.x889kno.x2vl965.x1a8lsjc.xe2zdcy {
 		background-color: var(--cssgreen-2);
-	}
-	.x570efc.x9f619.x78zum5.x1okw0bk.x6s0dn4.x1peatla.x14ug900.x1280gxy.x889kno.x1a8lsjc.x106a9eq.x1xnnf8n,
- 	.x570efc.x9f619.x78zum5.x1okw0bk.x6s0dn4.x1peatla.x14ug900.x1280gxy.x889kno.x2vl965.x1a8lsjc.xe2zdcy {
-		margin-bottom: 10px;
 	}
 	.x104kibb.x1iyjqo2.x4osyxg.x1198e8h.x6ikm8r.x10wlt62.x1mzt3pk.xo442l1.x1ua5tub.x117nqv4.x1aueamr.x1wm35g.xj8l9r2,
  	.x1iyjqo2.x6ikm8r.x10wlt62.xlyipyv.xuxw1ft._ao3e.selectable-text.copyable-text,
@@ -341,16 +473,6 @@ if (headerCol == "viridian") {
 	.xjb2p0i.xk390pu.x1heor9g.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6s0dn4.x1280gxy.x1ubxc9n.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1s70e7g.x1ypdohk.x1s07b3s.x78zum5.x1ba4aug.x1hc1fzr.x1lfpgzf.x16ovd2e.x12xbjc7.xdx6fka.xvtqlqk.x150mmf0.xqf2s3x:hover {
 		background-color: var(--cssgreen-1);
 	}
-	/*.xgz6z4f,
-	span.xxk0z11.xvy4d1p[data-icon="search-refreshed"],
-	span.xxk0z11.xvy4d1p[data-icon="more-refreshed"],
-	span.xxk0z11.xvy4d1p[data-icon="new-chat-outline"] path,
-	span[data-icon="video-call-refreshed"]:has(+span[class="xdwrcjd"])+.xdwrcjd,
- 	button[aria-label="Status Menu"],
-	span[data-icon="new-round-refreshed"],
- 	path[d="M11 13V16C11 16.2833 11.0958 16.5208 11.2875 16.7125C11.4792 16.9042 11.7167 17 12 17C12.2833 17 12.5208 16.9042 12.7125 16.7125C12.9042 16.5208 13 16.2833 13 16V13H16C16.2833 13 16.5208 12.9042 16.7125 12.7125C16.9042 12.5208 17 12.2833 17 12C17 11.7167 16.9042 11.4792 16.7125 11.2875C16.5208 11.0958 16.2833 11 16 11H13V8C13 7.71667 12.9042 7.47917 12.7125 7.2875C12.5208 7.09583 12.2833 7 12 7C11.7167 7 11.4792 7.09583 11.2875 7.2875C11.0958 7.47917 11 7.71667 11 8V11H8C7.71667 11 7.47917 11.0958 7.2875 11.2875C7.09583 11.4792 7 11.7167 7 12C7 12.2833 7.09583 12.5208 7.2875 12.7125C7.47917 12.9042 7.71667 13 8 13H11ZM12 22C10.6167 22 9.31667 21.7375 8.1 21.2125C6.88333 20.6875 5.825 19.975 4.925 19.075C4.025 18.175 3.3125 17.1167 2.7875 15.9C2.2625 14.6833 2 13.3833 2 12C2 10.6167 2.2625 9.31667 2.7875 8.1C3.3125 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.3125 8.1 2.7875C9.31667 2.2625 10.6167 2 12 2C13.3833 2 14.6833 2.2625 15.9 2.7875C17.1167 3.3125 18.175 4.025 19.075 4.925C19.975 5.825 20.6875 6.88333 21.2125 8.1C21.7375 9.31667 22 10.6167 22 12C22 13.3833 21.7375 14.6833 21.2125 15.9C20.6875 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6875 15.9 21.2125C14.6833 21.7375 13.3833 22 12 22ZM12 20C14.2333 20 16.125 19.225 17.675 17.675C19.225 16.125 20 14.2333 20 12C20 9.76667 19.225 7.875 17.675 6.325C16.125 4.775 14.2333 4 12 4C9.76667 4 7.875 4.775 6.325 6.325C4.775 7.875 4 9.76667 4 12C4 14.2333 4.775 16.125 6.325 17.675C7.875 19.225 9.76667 20 12 20Z"],
-	.xjb2p0i.xk390pu.x1heor9g.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6s0dn4.x1280gxy.x1ubxc9n.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1s70e7g.x1ypdohk.x1s07b3s.x78zum5.x1ba4aug.x1hc1fzr.x1lfpgzf.x16ovd2e.x12xbjc7.xdx6fka.xvtqlqk.x150mmf0.xqf2s3x svg,
- 	header .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x6s0dn4.x78zum5.x1vjfegm*/
 	.xgz6z4f,
  	header .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x6s0dn4.x78zum5.x1vjfegm span:has(> svg),
  	header .xjb2p0i.xk390pu.x1heor9g.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6s0dn4.x1280gxy.x1ubxc9n.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1s70e7g.x1ypdohk.x1s07b3s.x78zum5.x1ba4aug.x1hc1fzr.x1lfpgzf.x16ovd2e.x12xbjc7.xdx6fka.xvtqlqk.x150mmf0.xqf2s3x svg {
@@ -367,10 +489,6 @@ if (headerCol == "viridian") {
  	body.dark .xjb2p0i.xk390pu.x1heor9g.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6s0dn4.x1280gxy.x1ubxc9n.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1s70e7g.x1ypdohk.x1s07b3s.x78zum5.x1ba4aug.x1hc1fzr.x1lfpgzf.x16ovd2e.x12xbjc7.xdx6fka.xvtqlqk.x150mmf0.xqf2s3x,
  body.dark header.x570efc.x9f619.x78zum5.x1okw0bk.x6s0dn4.x1peatla.x14ug900.x1280gxy.x889kno.x2vl965.x1a8lsjc.xe2zdcy  {
 		background-color: var(--cssblack-2);
-	}
-	.x570efc.x9f619.x78zum5.x1okw0bk.x6s0dn4.x1peatla.x14ug900.x1280gxy.x889kno.x1a8lsjc.x106a9eq.x1xnnf8n,
- 	.x570efc.x9f619.x78zum5.x1okw0bk.x6s0dn4.x1peatla.x14ug900.x1280gxy.x889kno.x2vl965.x1a8lsjc.xe2zdcy {
-		margin-bottom: 10px;
 	}
 	.x104kibb.x1iyjqo2.x4osyxg.x1198e8h.x6ikm8r.x10wlt62.x1mzt3pk.xo442l1.x1ua5tub.x117nqv4.x1aueamr.x1wm35g.xj8l9r2,
  	.x1iyjqo2.x6ikm8r.x10wlt62.xlyipyv.xuxw1ft._ao3e.selectable-text.copyable-text,
@@ -401,15 +519,6 @@ if (headerCol == "viridian") {
 		color: var(--cssgray-3);
 		fill: var(--cssgray-3)!important;
 	}
-	/*
-	.xgz6z4f,
-	span.xxk0z11.xvy4d1p[data-icon="search-refreshed"],
-	span.xxk0z11.xvy4d1p[data-icon="more-refreshed"],
-	span.xxk0z11.xvy4d1p[data-icon="new-chat-outline"] path,
-	span[data-icon="video-call-refreshed"]:has(+span[class="xdwrcjd"])+.xdwrcjd,
-	header .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x6s0dn4.x78zum5.x1vjfegm,
-	.html-span.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x1lliihq.x193iq5w.x6ikm8r.x10wlt62.xlyipyv.xuxw1ft
-	*/
 	body.dark .xgz6z4f,
  	body.dark header .html-div.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x6s0dn4.x78zum5.x1vjfegm span:has(> svg),
  	body.dark header .xjb2p0i.xk390pu.x1heor9g.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x6s0dn4.x1280gxy.x1ubxc9n.xnj1f2r.x2uibgs.xkveyfu.x12llq9.xt8t1vi.x1xc408v.x129tdwq.x15urzxu.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.x1s70e7g.x1ypdohk.x1s07b3s.x78zum5.x1ba4aug.x1hc1fzr.x1lfpgzf.x16ovd2e.x12xbjc7.xdx6fka.xvtqlqk.x150mmf0.xqf2s3x svg {
@@ -420,21 +529,9 @@ if (headerCol == "viridian") {
 	/*Nothing :3*/
 }
 
-/*Header (sidebar) icons*/
-/*span[data-icon="community-refreshed-32"], span[data-icon="community-refreshed-filled-32"],
-span[data-icon="status-refreshed"], span[data-icon="status-filled-refreshed"]
-span[data-icon="newsletter-unread-outline"], span[data-icon="newsletter-outline"], span[data-icon="settings-outline"], [aria-label="Chats"],
-._ajvb > [aria-selected="true"],
-span[data-icon="community-unread-tab"], span[data-icon="community-tab"],
-span[data-icon="status-unread-tab"], span[data-icon="status-tab"]
-span[data-icon="newsletter-unread-tab"], span[data-icon="newsletter-tab"],
-span[data-icon="new-chat-tab"], span[data-icon="settings"], [aria-label="Chats"],
-span[data-icon="settings-refreshed"],span[data-icon="settings-filled-refreshed"],
-span[data-icon="media-refreshed"],*/
 .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x2lwn1j.x1nhvcw1.xdt5ytf.x1cy8zhl.x1277o0a span:has(> svg){
 	color: #fff;
 }
-/*Unsure whether I should delete these or not, in favour of the more synthetic one. I'll leave them on just in case - I've already learnt my lesson with the "Whatsapp for Desktop" banner...*/
 
 /*Header (sidebar) icons' unread blob*/
 .x1rg5ohu.x173ssrc.x1xaadd7.x682dto.x1e01kqd.x12j7j87.x9bpaai.x1pg5gke.x1s688f.xo5v014.x1u28eo4.x2b8uid.x16dsc37.x18ba5f9.x1sbl2l.xy9co9w.x5r174s.x7h3shv, .x1rg5ohu.x11inojt.x16suv20.xo5v014.x1pse0pq.x2b8uid.x16dsc37.xyp3urf.x1lq5wgf.xgqcy7u.x30kzoy.x9jhf4c {
@@ -519,14 +616,9 @@ if (noLogo == 1) {
 .x1380le5.x14mko6t.xefnzgg.x1uvdrpn .x1n2onr6*/ {
 	border-radius: 5px;
 }
-/*Those teeny tiny borders I don't like*/
-._aig-._as6h.x9f619.x1n2onr6.xupqr0c.x5yr21d.x6ikm8r.x10wlt62.x17dzmu4.x1i1dayz.x2ipvbc.xjdofhw.xpilrb4.x1t7ytsu.x1vb5itz,
-._aigw._as6h.x9f619.x1n2onr6.x5yr21d.x17dzmu4.x1i1dayz.x2ipvbc.xjdofhw.x78zum5.xdt5ytf.x12xzxwr.x1plvlek.xryxfnj.x570efc.x18dvir5.xxljpkc.xwfak60.x18pi947 {
-	margin-left: -1px;
-}
 /*Different archived colour*/
 #pane-side button[class="xjb2p0i xk390pu x1heor9g x1ypdohk xjbqb8w x972fbf x10w94by x1qhh985 x14e42zd x1fmog5m xu25z0z x140muxe xo1y3bh xexx8yu xyri2b x18d9i69 x1c1uobl x2lah0s xav9cv8 x4tpdpg x1lziwak x14z9mp xtnn1bt x9v5kkp xmw7ebm xrdum7p"] {
-	background-color: var(--csswhite-2);
+	background-color: var(--csscream-5);
 	._ak8q, .x140p0ai.x1gufx9m.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x193iq5w.xeuugli.x1vvkbs.x1lliihq.x1fj9vlw.xhslqc4.xdnwjd9.x1hx0egp.x1pg5gke.xjb2p0i.xfjzk2p.xl2ypbo.x1ic7a3i, span[data-icon="archive-refreshed"] {
 		color: var(--cssgray-1);
 	}
@@ -622,16 +714,19 @@ if (chatFilters == "subtle") {
 	div[aria-label="chat-list-filters"] button[aria-pressed="true"] {
 		border: unset;
 		background: var(--cssgreen-4);
-	}
-	button[aria-controls="chat-list"] span {
-		color: #fff!important;
+		span {
+			color: #fff;
+		}
 	}
 	div[aria-label="chat-list-filters"] button[aria-pressed="false"] {
 		border: unset;
-		background: var(--cssgreen-1);
+		background: unset;
+		span {
+			color: var(--cssgreen-2);
+		}
 	}
-	body.dark div[aria-label="chat-list-filters"] button[aria-pressed="false"] {
-		background: var(--cssgreen-2);
+	.dark div[aria-label="chat-list-filters"] button[aria-pressed="false"] span {
+		color: var(--cssgreen-1);
 	}
 } else if (chatFilters == "hidden") {
 	#side div[aria-label="chat-list-filters"] {
@@ -649,14 +744,9 @@ if (chatFilters == "subtle") {
 */
 
 /*Read checkmark*/
-.x1fi5f43.x1fi5f43, .x1fi5f43.x1fi5f43:root,
-.xa3rncp.xa3rncp, .xa3rncp.xa3rncp:root {
+.x1fi5f43.x1fi5f43, .x1fi5f43.x1fi5f43:root, .xa3rncp.xa3rncp, .xa3rncp.xa3rncp:root, .x1rv0e52 {
 	--WDS-content-read: checkedColor;
 }
-/*
-For legacy purposes, the selector used for that is:
-.x1q15gih, .x78zum5.x1okw0bk.x16dsc37.x1xp8n7a.xl56j7k.x1q15gih.xfs2ol5, .x1rv0e52
-*/
 
 /*Fixes stickers*/
 ._ajxb._ajxd, ._ajxb._ajxc._ajxd svg {
@@ -681,12 +771,39 @@ For legacy purposes, the selector used for that is:
 }
 
 /*Adds background to chat input*/
+#main {
+	overflow: visible;
+}
 footer._ak1i.x1wiwyrm {
 	background: var(--csswhite-2);
 }
 body.dark footer._ak1i.x1wiwyrm {
 	background: var(--cssblack-1);
 }
+if (noLines == 0) {
+	footer._ak1i.x1wiwyrm {
+		border-right: 1px solid var(--cssborder);
+	}
+	.x1c4vz4f.x2lah0s.xdl72j9.x14yy4lh:before {
+		content: "";
+		position: absolute;
+		bottom: var(--height-pane-footer);
+		left: 0;
+		width: 100%;
+		height: inherit;
+		background: linear-gradient(transparent, var(--cssborder));
+		transition: height .1s ease-in-out 0s;
+		opacity: .6;
+	}
+	.x1c4vz4f.x2lah0s.xdl72j9.x14yy4lh[style="height: 0px;"]:before {
+		height: 5px;
+	}
+} else {
+	footer._ak1i.x1wiwyrm {
+		border-right: unset!important;
+	}
+}
+
 .x1n2onr6.xhtitgo.x9f619.x78zum5.x1q0g3np.xuk3077.xjbqb8w.x1wiwyrm.xquzyny.xvc5jky.x11t971q.xnpuxes.copyable-area {
 	margin-top: 5px;
 }
@@ -841,5 +958,13 @@ div[role="listitem"] .x1n2onr6.x1ja2u2z.x9f619.x2lah0s.xamhcws.x1alpsbp.xlxy82.x
 }
 body.dark .x10l6tqk.x13vifvy.x1o0tod.xhtitgo.x9f619.xh8yej3.x5yr21d.x6ikm8r.x10wlt62.x47corl.x1whkhu0.x3emv5x.x1ydeqjr.xyg86qh.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x18p79ws.xc28ydg.xvxx97b.x1028phh.x1es37l9.xq7a5ml {
 	border-color: var(--cssgreen-8);
+}
+
+/*"Red" buttons on profiles (block, report, delete...)*/
+.x7zqoo0.xt1g1te.x1iz9ej4.x1ga13z8.x1aiwb2g.x1n67ipk.x1hm9lzh.x1sa5p1d {
+	border-radius: 0;
+}
+div.x7zqoo0.xt1g1te.x1iz9ej4.x1ga13z8.x1aiwb2g.x1n67ipk.x1hm9lzh.x1sa5p1d:not(:has(span[data-icon="favorite-refreshed"])):hover {
+	background-color: #ea00381a
 }
 }
