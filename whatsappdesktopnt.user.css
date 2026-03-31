@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Whatsapp'd Whatsapp
 @namespace      https://github.com/BleatBytes/whatsappd-whatsapp
-@version        1.7.0
+@version        1.7.1
 @description    Making Whatsapp Web look more like its pre-2025 self.
 @author         Valen
 @preprocessor	stylus
@@ -37,7 +37,6 @@ https://ko-fi.com/valensart
 https://ko-fi.com/valensart
 https://ko-fi.com/valensart
 */
-
 @-moz-document domain("web.whatsapp.com") {
 /*
 ============
@@ -680,7 +679,7 @@ if (noLogo == 1) {
 }
 
 /*Chat list no round corners. Includes other similar hover-able elements in the main body div, like channels*/
-.x889kno.x2vl965.x1a8lsjc.xe2zdcy {
+.x889kno.x2vl965.x1a8lsjc.xe2zdcy:not([type="button"]) {
 	padding-left: unset;
 	padding-right: unset;
 }
