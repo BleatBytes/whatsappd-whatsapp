@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Whatsapp'd Whatsapp
 @namespace      https://github.com/BleatBytes/whatsappd-whatsapp
-@version        1.7.2
+@version        1.7.5
 @description    Making Whatsapp Web look more like its pre-2025 self.
 @author         Valen
 @preprocessor	stylus
@@ -17,8 +17,10 @@
 @var checkbox noLogo "  Hide the WhatsApp logo from the header" 0
 @var checkbox noLines "  Hide vertical lines separating sections" 0
 @var checkbox thickScrolls "Make scrollbars thicker" 0
+@var checkbox colScrolls "Add colour to scrollbars (may not work on all browsers!)" 0
 @var select chatFilters "  Chat filter buttons" ["default", "subtle", "viridian", "hidden"]
 @var range noRound "  Change how rounded the popups' borders are" [18,0,25,1,"px"]
+@var checkbox noAI "  Hide the Meta AI button on the sidebar" 0
 
 @var checkbox titleThree "⚒️ -- CHATS -- ⚒️" 1
 @var color checkedColor	"  Read checkmark colour" #53bdeb
@@ -283,20 +285,21 @@ button[role="listitem"]:last-of-type .xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x
 .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.x1iymm2a.xeuugli.x2lwn1j.xl56j7k.x1q0g3np.x1cy8zhl {
 	margin-top: 20px;
 }
-/*Separators for contacts list*/
-.x1n2onr6.x1n2onr6.xupqr0c.x78zum5.x1r8uery.x1iyjqo2.xdt5ytf.x6ikm8r.x1odjw0f.x1hc1fzr.x1anedsm.x1280gxy .x10l6tqk.xh8yej3.x1g42fcv:not(:has(div[class="x4f6e3x x6ikm8r x10wlt62 x1280gxy x1n2onr6"])), .x1n2onr6.x1n2onr6.xupqr0c.x78zum5.x1r8uery.x1iyjqo2.xdt5ytf.x6ikm8r.x1odjw0f.x1hc1fzr.x1280gxy .x10l6tqk.xh8yej3.x1g42fcv:not(:first-of-type):not(:has(div[class="x4f6e3x x6ikm8r x10wlt62 x1280gxy x1n2onr6"])) {
+/*Contacts list margins fix*/
+
+/*New chat, new group*/
+div[data-testid="new-chat-drawer"] .x10l6tqk.xh8yej3.x1g42fcv[role="listitem"]:not([data-testid="list-item-0"]):has(> div[role="button"]),
+div[data-testid="new-group-drawer-participants"] .x10l6tqk.xh8yej3.x1g42fcv[role="listitem"]:not([data-testid="list-item-0"]):has(> div[role="button"]) {
 	margin-top: -20px;
 }
-.x10l6tqk.xh8yej3.x1g42fcv[role="listitem"]:has(> div[role="button"]) {
-	margin-top: -20px;
-}
+
 /*Title "Whatsapp contacts, A, B..."*/
 .x10l6tqk.xh8yej3.x1g42fcv:has(div[class="x4f6e3x x6ikm8r x10wlt62 x1280gxy x1n2onr6"]) {
 	height: auto!important;
 	.x4f6e3x.x6ikm8r.x10wlt62.x1280gxy.x1n2onr6 {
 		if (wappTheme == "viridian") {
 			--cssseparator: var(--cssgreen-9);
-		} else {
+		} else if (wappTheme == "subtle") {
 			--cssseparator: var(--csswhite-2);
 		}
 		height: auto;
@@ -313,24 +316,11 @@ button[role="listitem"]:last-of-type .xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x
 	.x4f6e3x.x6ikm8r.x10wlt62.x1280gxy.x1n2onr6 {
 		if (wappTheme == "viridian") {
 			--cssseparator: var(--cssgreen-8);
-		} else {
+		} else if (wappTheme == "subtle") {
 			--cssseparator: var(--cssblack-2);
 		}
 	}
 }
-/*last element before the next separator*/
-/*.x10l6tqk.xh8yej3.x1g42fcv:has(+ div[class="x10l6tqk xh8yej3 x1g42fcv"] div[class="x4f6e3x x6ikm8r x10wlt62 x1280gxy x1n2onr6"]) {
-	border-bottom: 2px solid #ff00004d;
-	div[class="_ak72 false false false _ak73 _asiw _ap1- _ap1_"] {
-		background: #f1c1ff;
-	}
-}*/
-/*First element after separator*/
-/*.x10l6tqk.xh8yej3.x1g42fcv:has(div[class="x4f6e3x x6ikm8r x10wlt62 x1280gxy x1n2onr6"]) + .x10l6tqk.xh8yej3.x1g42fcv {
-	div[class="_ak72 false false false _ak73 _asiw _ap1- _ap1_"] {
-		background: #f290ba;
-	}
-}*/
 
 /*Hover on log out button*/
 button.xjb2p0i.xk390pu.x1heor9g.x1ypdohk.xjbqb8w.x972fbf.x10w94by.x1qhh985.x14e42zd.x1fmog5m.xu25z0z.x140muxe.xo1y3bh.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1yc453h.x6ikm8r.x10wlt62.x78zum5.x1iyjqo2.x2lah0s.xdl72j9.xkh2ocl.xh8yej3:last-of-type .xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x1nhvcw1.x1q0g3np.x9f619.x1iyjqo2.x1qjc9v5.x879a55.x16ydxro.xyo1k6t.xlr9sxt.xvvg52n.xwd4zgb.xq8v1ta.x17gydlx.x1jsj9aw:hover {
@@ -382,7 +372,10 @@ button.xjb2p0i.xk390pu.x1heor9g.x1ypdohk.xjbqb8w.x972fbf.x10w94by.x1qhh985.x14e4
 .x9f619.x78zum5.x1c4vz4f.x2lah0s.xdl72j9.xdt5ytf.x6ikm8r.x10wlt62.x1xn7y0n.x1uxb8k9.x1vmbcc8.x16xm01d.xs2e80n.x14atkfc.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x16w0wmm,
 .x1qjc9v5.x9f619.x78zum5.xdt5ytf.x129bwdz.x1trrmfo.xt7fyls.x1tiyuxx.x1nbhmlj.x181vq82.x1uc92m.x1280gxy.x6nvzda.x4i4b9w.xhl9efl.xj65ea0.x1ekq09l.xlmuga0.x54tcbp.xlzwp1d.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.xvktan5.x4afe7t.xuqacwm.x10e4vud.xf68679.xf6vlc6.x65gd29,
 .app-wrapper-web div[class="_ak4w _ap4- _ap4_"],
-.x9f619.x78zum5.x1c4vz4f.x2lah0s.xdl72j9.xdt5ytf.x1xy6bms.x64bnmy.xx6bls6.x13jy36j.x16w0wmm.x6ikm8r.x10wlt62.x1xn7y0n.x1uxb8k9.x1vmbcc8.x16xm01d.xs2e80n.x1l2rt3b {
+.x9f619.x78zum5.x1c4vz4f.x2lah0s.xdl72j9.xdt5ytf.x1xy6bms.x64bnmy.xx6bls6.x13jy36j.x16w0wmm.x6ikm8r.x10wlt62.x1xn7y0n.x1uxb8k9.x1vmbcc8.x16xm01d.xs2e80n.x1l2rt3b,
+.x1x0w6k2.x1sr759z.x1c1uobl.xyri2b.x10l6tqk.x1yc453h.x1bpt9pm.xbjudin.xnlwouz.xpp8er5.xs9wviy.x1bby3tu.x6ikm8r.x10wlt62.x18d9i69.x123j3cw.x27kpxv.xewp6mh.x1bn0trz,
+.x1qjc9v5.x9f619.x78zum5.xdt5ytf.x129bwdz.x1trrmfo.xt7fyls.x1tiyuxx.x1nbhmlj.x181vq82.x1uc92m.x1280gxy.x6nvzda.x4i4b9w.xhl9efl.xj65ea0.x1ekq09l.xlmuga0.x54tcbp.xlzwp1d.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x178xt8z.x1lun4ml.xso031l.xpilrb4.xvktan5.x4afe7t.xuqacwm.x10e4vud.xf6vlc6.x65gd29,
+.x9f619.x78zum5.xdt5ytf.x16w0wmm.x6ikm8r.x10wlt62.x1xn7y0n.x1uxb8k9.x1vmbcc8.x16xm01d.xs2e80n.x1n2onr6.x1iyjqo2.xs83m0k.x1l7klhg.xs8rnei.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1coevs8.x14z9mp.xui9b5u.x1lziwak.xg3pqpk.xusj4dd.x1a6k631.x1fwmvtr.x1n7bigs.x6ln8mz.x12v3509.xf35npv {
 	border-radius: noRound!important;
 }
 /*
@@ -501,13 +494,14 @@ if (wappTheme != "default") {
 	/*,
 	.x1n2onr6.xupqr0c.x78zum5.x1r8uery.x1iyjqo2.xdt5ytf.x6ikm8r.x1odjw0f.x1hc1fzr:not(:has(div[class="_al_c"])) <- afecta a ajustes y a Nuevo Chat*/
 	.x1n2onr6.x1c4vz4f.x2lah0s.xdl72j9.x1280gxy.xat24cr,
-	.x1n2onr6.xupqr0c.x78zum5.x1r8uery.x1iyjqo2.xdt5ytf.x6ikm8r.x1odjw0f.x1hc1fzr:not(:has(div[class="_al_c"])),
+	div[data-testid="me-tab-drawer"] .x1n2onr6.xupqr0c.x78zum5.x1r8uery.x1iyjqo2.xdt5ytf.x6ikm8r.x1odjw0f.x1hc1fzr:not(:has(div[class="_al_c"])),
 	.x1n2onr6.x11uqc5h.x9f619.x78zum5.x1okw0bk.xl2dz39.xexx8yu.x18d9i69.x73uwhe.x1qhh985.x1sy0etr.xa3a66u.x1gnnqk1.x1phvje8.xcldk2z.x7a106z.x4tpdpg,
-	.x1n2onr6.x11uqc5h.x9f619.x78zum5.x1okw0bk.xl2dz39.xexx8yu.x18d9i69.x1280gxy.x73uwhe.x1qhh985.x1sy0etr.x1phvje8.xcldk2z.x7a106z.x4tpdpg,
- 	#side {
+ 	div[data-testid="newsletter-drawer"]:has(div[class="x2b8uid x1yztbdb"]) div[data-testid="newsletter-recommended-unit"],
+ 	div[data-testid="new-chat-drawer"] div[data-testid="chat-list-search-container"]{
 		margin-top: 10px;
 	}
 	#side {
+		padding-top: 10px;
 		box-shadow: 1px 0 0 var(--cssborder), -1px 0 0 var(--cssborder);
 	}
 	if (noLines == 0) {
@@ -691,13 +685,20 @@ if (noLogo == 1) {
 }
 ._ap1-,
 .xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x1nhvcw1.x1q0g3np.x9f619.x1iyjqo2.x1qjc9v5.x1qafhyn.xlr9sxt.xvvg52n.xwd4zgb.xq8v1ta.x17gydlx.x1jsj9aw.x1hm9lzh.x1sa5p1d,
-.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x1nhvcw1.x1q0g3np.x9f619.x1iyjqo2.x1qjc9v5.x879a55.xlr9sxt.xvvg52n.xwd4zgb.xq8v1ta.x17gydlx.x1jsj9aw {
+.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x1nhvcw1.x1q0g3np.x9f619.x1iyjqo2.x1qjc9v5.x879a55.xlr9sxt.xvvg52n.xwd4zgb.xq8v1ta.x17gydlx.x1jsj9aw,
+.x13mwh8y.x1q3qbx4.x1wg5k15.x1n2onr6.x1c4vz4f.x2lah0s.xdl72j9.x1280gxy.xat24cr.x106a9eq.x1xnnf8n,
+.x13mwh8y.x1q3qbx4.x1wg5k15.x3psx0u.x1280gxy.x106a9eq.x1xnnf8n.x889kno.x18d9i69.xat24cr {
 	margin-left: unset;
 	margin-right: unset;
 	padding-left: 10px;
 	padding-right: 10px;
 	border-radius: 0;
 }
+
+.x13mwh8y.x1q3qbx4.x1wg5k15.x3psx0u.x1280gxy.x106a9eq.x1xnnf8n.x889kno.x18d9i69.xat24cr .xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x16ovd2e {
+	padding-left: 10px;	
+}
+
 .xjb2p0i.xk390pu.x1heor9g.x972fbf.x10w94by.x1qhh985.x14e42zd.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x78zum5.x1c4vz4f.x2lah0s.xdl72j9.x1q0g3np.x6s0dn4.x1qughib.xwnsf4a.x1yc453h.x1ypdohk.x1ubxc9n.xlr9sxt.xvvg52n.xwd4zgb.xq8v1ta.x1hm9lzh.x1sa5p1d.xnlsq7q {
 	width: 100%;
 	margin-left: unset;
@@ -743,10 +744,12 @@ if (noLogo == 1) {
 	margin-right: 20px;
 }
 /*Background color on hover for "expandables". Could be tied to theme?*/
-.x10l6tqk.xh8yej3.x1g42fcv .x1rgrh6f.xo1mcw5.x1iikomf.xzoqdy8._ak72.false.false.false._ak73._asiw._ak8c._ap1-._ap1_:hover {
+.x10l6tqk.xh8yej3.x1g42fcv .x1rgrh6f.xo1mcw5.x1iikomf.xzoqdy8._ak72.false.false.false._ak73._asiw._ak8c._ap1-._ap1_:hover,
+._alzb._auk8.xnnlda6.xh8yej3.x9f619.xe2zdcy.x78zum5.x6s0dn4.xhslqc4.x17gydlx:hover {
 	background-color: var(--cssgreen-9);
 }
-.dark .x10l6tqk.xh8yej3.x1g42fcv .x1rgrh6f.xo1mcw5.x1iikomf.xzoqdy8._ak72.false.false.false._ak73._asiw._ak8c._ap1-._ap1_:hover {
+.dark .x10l6tqk.xh8yej3.x1g42fcv .x1rgrh6f.xo1mcw5.x1iikomf.xzoqdy8._ak72.false.false.false._ak73._asiw._ak8c._ap1-._ap1_:hover,
+.dark ._alzb._auk8.xnnlda6.xh8yej3.x9f619.xe2zdcy.x78zum5.x6s0dn4.xhslqc4.x17gydlx:hover {
 	background-color: var(--cssgreen-8);
 }
 
@@ -869,10 +872,40 @@ if (chatFilters == "subtle") {
 	/*Nothing :3*/
 }
 
+/*Fixes margins on menues and lists, including members lists*/
+#pane-side.x1n2onr6.xupqr0c.x78zum5.xdt5ytf.x1iyjqo2.x1odjw0f.x1280gxy div[class="x10l6tqk xh8yej3 x1g42fcv"],
+#pane-side.x1n2onr6.xupqr0c.x78zum5.xdt5ytf.x1iyjqo2.x1odjw0f.xjbqb8w div[class="x10l6tqk xh8yej3 x1g42fcv"] {
+	margin-top: 0px;
+}
+.x13mwh8y.x1q3qbx4.x1wg5k15.x3psx0u.xat24cr.x1280gxy.x889kno.x18d9i69.x1c1uobl.xyri2b.x1anpbxc,
+.x13mwh8y.x1q3qbx4.x1wg5k15.x3psx0u.xat24cr.x1280gxy.x106a9eq.x1xnnf8n.x889kno.x18d9i69 {
+	margin-left: 10px;
+}
+/*Fixes margins on empty state drawers (empty screens)*/
+div[data-testid="empty-state-drawer"] .x1n2onr6.xupqr0c.x78zum5.x1r8uery.x1iyjqo2.xdt5ytf.x6ikm8r.x1odjw0f.x1hc1fzr {
+	margin-top: unset;
+}
+/*Fixes padding on temporary messages icon*/
+.x1n2onr6 .x10l6tqk.xhu3bip.x48lskh.x16uhe5s.x9f619.xw4jnvo.x1qx5ct2.x47corl.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p.x4p5aij.x1ccui7m.x1j85h84.x18pi947.x1280gxy,
+.x1n2onr6 .x10l6tqk.xhu3bip.x48lskh.x16uhe5s.x9f619.xw4jnvo.x1qx5ct2.x47corl.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p.x4p5aij.x1ccui7m.x1j85h84.x18pi947.x8b8lpe {
+	padding-left: 1px;
+}
+
 /*Changes the size of the scrollbar to auto (which usually makes the scrollbar thicker)*/
 if (thickScrolls == 1) {
 	* {
 		scrollbar-width: auto!important;
+	}
+}
+
+/*Adds colour to the scrollbars. May not work on all browsers!*/
+
+if (colScrolls == 1) {
+	* {
+		scrollbar-color: auto;
+	}
+	.dark * {
+		scrollbar-color: auto;
 	}
 }
 
@@ -884,6 +917,21 @@ div[role="listbox"] button.xjb2p0i.xk390pu.x1heor9g.x1ypdohk.xjbqb8w.x972fbf.x10
 button[role="listitem"] .xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x1nhvcw1.x1q0g3np.x9f619.x1iyjqo2.x1qjc9v5.x879a55.x16ydxro.xyo1k6t.xlr9sxt.xvvg52n.xwd4zgb.xq8v1ta.x4a1f80.xatmcw1 {
 	border-radius: 0;
 }
+
+/*Hides Meta AI button*/
+if(noAI == 1) {
+	header .html-span.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j:has(img[src="https://static.whatsapp.net/rsrc.php/yS/r/T_xj3a3ApC9.webp"]) {
+		display: none;
+	}
+}
+
+/*Fixes "thought bubble" not stretching correctly in user settings*/
+.x16w0wmm.x1g83kfv.x3qq2k7.x2x8art.x1qor8vf.xz9dl7a.xsag5q8.x106a9eq.x1xnnf8n.x14uwln3.xxlh38d.x78zum5.x6s0dn4.xl56j7k.x2b8uid.x548zag.xgtmz09 {
+	display: flex;
+	flex-flow: row wrap;
+	max-width: max-content;
+}
+
 }
 @-moz-document domain("web.whatsapp.com") {
 /*
@@ -923,10 +971,10 @@ button[role="listitem"] .xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk
 #main {
 	overflow: visible;
 }
-footer._ak1i.x1wiwyrm {
+footer.x1n2onr6.xhtitgo.x9f619.x1okw0bk.xo1ph6p.xh8yej3.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1wiwyrm {
 	background: var(--csswhite-2);
 }
-.dark footer._ak1i.x1wiwyrm {
+.dark footer.x1n2onr6.xhtitgo.x9f619.x1okw0bk.xo1ph6p.xh8yej3.xexx8yu.xyri2b.x18d9i69.x1c1uobl.x1wiwyrm {
 	background: var(--cssblack-1);
 }
 if (noLines == 0) {
@@ -1068,9 +1116,14 @@ button:has(span[class="x140p0ai x1gufx9m x1s928wv xhkezso x1gmr53x x1cpjm7i x1fg
 }
 
 /*Hides that new unnecessary search button on user info*/
-section.x1c4vz4f.x2lah0s.xdl72j9.x1w3bhph .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x2lwn1j.xl56j7k.x1q0g3np.x1cy8zhl.x1xmf6yo.x12nagc,
-section.x2lah0s.x1c4vz4f.xdl72j9.x1w3bhph .xh8yej3.x1de0gy {
+section[data-testid="group-info-drawer-body"] .xh8yej3.x1de0gy .xh8yej3.x18qnofl:has(path[d="M9.5 16C7.68333 16 6.14583 15.3708 4.8875 14.1125C3.62917 12.8542 3 11.3167 3 9.5C3 7.68333 3.62917 6.14583 4.8875 4.8875C6.14583 3.62917 7.68333 3 9.5 3C11.3167 3 12.8542 3.62917 14.1125 4.8875C15.3708 6.14583 16 7.68333 16 9.5C16 10.2333 15.8833 10.925 15.65 11.575C15.4167 12.225 15.1 12.8 14.7 13.3L20.3 18.9C20.4833 19.0833 20.575 19.3167 20.575 19.6C20.575 19.8833 20.4833 20.1167 20.3 20.3C20.1167 20.4833 19.8833 20.575 19.6 20.575C19.3167 20.575 19.0833 20.4833 18.9 20.3L13.3 14.7C12.8 15.1 12.225 15.4167 11.575 15.65C10.925 15.8833 10.2333 16 9.5 16ZM9.5 14C10.75 14 11.8125 13.5625 12.6875 12.6875C13.5625 11.8125 14 10.75 14 9.5C14 8.25 13.5625 7.1875 12.6875 6.3125C11.8125 5.4375 10.75 5 9.5 5C8.25 5 7.1875 5.4375 6.3125 6.3125C5.4375 7.1875 5 8.25 5 9.5C5 10.75 5.4375 11.8125 6.3125 12.6875C7.1875 13.5625 8.25 14 9.5 14Z"]),
+section .x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x2lwn1j.xl56j7k.x1q0g3np.x1cy8zhl.x1xmf6yo.x12nagc .xh8yej3.x18qnofl:has(path[d="M9.5 16C7.68333 16 6.14583 15.3708 4.8875 14.1125C3.62917 12.8542 3 11.3167 3 9.5C3 7.68333 3.62917 6.14583 4.8875 4.8875C6.14583 3.62917 7.68333 3 9.5 3C11.3167 3 12.8542 3.62917 14.1125 4.8875C15.3708 6.14583 16 7.68333 16 9.5C16 10.2333 15.8833 10.925 15.65 11.575C15.4167 12.225 15.1 12.8 14.7 13.3L20.3 18.9C20.4833 19.0833 20.575 19.3167 20.575 19.6C20.575 19.8833 20.4833 20.1167 20.3 20.3C20.1167 20.4833 19.8833 20.575 19.6 20.575C19.3167 20.575 19.0833 20.4833 18.9 20.3L13.3 14.7C12.8 15.1 12.225 15.4167 11.575 15.65C10.925 15.8833 10.2333 16 9.5 16ZM9.5 14C10.75 14 11.8125 13.5625 12.6875 12.6875C13.5625 11.8125 14 10.75 14 9.5C14 8.25 13.5625 7.1875 12.6875 6.3125C11.8125 5.4375 10.75 5 9.5 5C8.25 5 7.1875 5.4375 6.3125 6.3125C5.4375 7.1875 5 8.25 5 9.5C5 10.75 5.4375 11.8125 6.3125 12.6875C7.1875 13.5625 8.25 14 9.5 14Z"]){
 	display: none;
+}
+/*Fixes styling on user info buttons*/
+.html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.xs83m0k.xh8yej3.x9f619.x18qnofl.x1280gxy.x1ubxc9n.x11xlx4c.xnj1f2r.x2uibgs.xkveyfu.x12llq9.x1ypdohk.x1gb2em4.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x6nvzda.x4i4b9w.xhl9efl.xj65ea0.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p,
+.html-button.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl.xs83m0k.xh8yej3.x9f619.x18qnofl.x1280gxy.x1ubxc9n.x11xlx4c.xnj1f2r.x2uibgs.xkveyfu.x12llq9.x1gb2em4.x178xt8z.x1lun4ml.xso031l.xpilrb4.x13fuv20.x18b5jzi.x1q0q8m5.x1t7ytsu.x6nvzda.x4i4b9w.xhl9efl.xj65ea0.xtnn1bt.x9v5kkp.xmw7ebm.xrdum7p.x1lxidc1.x4dje6k.x1h6gzvc {
+	border-inline-start-width: 1px;
 }
 section .x13mwh8y.x1q3qbx4.x1wg5k15.x3psx0u.xat24cr.x1280gxy.x1h678fw.xcldk2z.xv6tirj.x1phvje8:has(span[class="x1v5yvga xxk0z11 xvy4d1p"]) {
 	padding-bottom: unset;
@@ -1110,10 +1163,11 @@ div[role="listitem"] .x1n2onr6.x1ja2u2z.x9f619.x2lah0s.xamhcws.x1alpsbp.xlxy82.x
 }
 
 /*"Red" buttons on profiles (block, report, delete...)*/
-.x7zqoo0.xt1g1te.x1iz9ej4.x1ga13z8.x1aiwb2g.x1n67ipk.x1hm9lzh.x1sa5p1d {
+.x7zqoo0.xt1g1te.x1iz9ej4.x1ga13z8.x1aiwb2g.x1n67ipk.x1hm9lzh.x1sa5p1d,
+.x7zqoo0.xt1g1te.x1iz9ej4.x1ga13z8.xoo5hyf.x3039w2.x1hm9lzh.x1sa5p1d {
 	border-radius: 0;
 }
-div.x7zqoo0.xt1g1te.x1iz9ej4.x1ga13z8.x1aiwb2g.x1n67ipk.x1hm9lzh.x1sa5p1d:not(:has(span[data-icon="favorite-refreshed"])):hover {
+div.x7zqoo0.xt1g1te.x1iz9ej4.x1ga13z8.x1aiwb2g.x1n67ipk.x1hm9lzh.x1sa5p1d:not([data-testid="li-lists"]):not([data-testid="li-favorite"]):hover {
 	background-color: #ea00381a
 }
 }
